@@ -53,7 +53,7 @@ namespace Terradue.ServiceModel.Ogc.OwsContext {
             return interval;
         }
 
-        public string ToString(){
+        public new string ToString(){
 
             string date = StartDate.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
             if (endDate < DateTime.MaxValue) {
