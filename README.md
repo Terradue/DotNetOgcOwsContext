@@ -4,6 +4,8 @@
 
 Terradue.ServiceModel.Ogc.OwsContext is a library targeting .NET 4.0 and above providing an model to represent and manipulate OWS context documents
 
+Reference: http://www.opengeospatial.org/standards/owc
+
 ## Usage examples
 
 ### OWS Context document creation and serialization 
