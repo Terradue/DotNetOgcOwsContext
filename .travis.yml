@@ -15,4 +15,4 @@ before_install:
 script:
   - nuget restore
   - xbuild
-  - nunit-console Terradue.ServiceModel.Ogc.OwsContext.Test/bin/Terradue.ServiceModel.Ogc.OwsContext.Test.dll
+  - nunit-console4 Terradue.ServiceModel.Ogc.OwsContext.Test/bin/Terradue.ServiceModel.Ogc.OwsContext.Test.dll
