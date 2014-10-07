@@ -12,7 +12,7 @@
     <summary>OGC OWS Context library for .Net</summary>
     <dependencies>
       <dependency id="Terradue.ServiceModel.Syndication" version="1.0.0" />
-    </dependencixes>
+    </dependencies>
   </metadata>
   <files>
     <file src="Terradue.ServiceModel.Ogc.OwsContext/bin/Terradue.ServiceModel.Ogc.OwsContext.dll" target="lib/net40/Terradue.ServiceModel.Ogc.OwsContext.dll" />
