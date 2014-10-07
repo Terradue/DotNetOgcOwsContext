@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5081E2DA-3358-4E1F-A506-FFB2A853D4AC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Terradue.ServiceModel.Ogc.OwsContext</RootNamespace>
+    <AssemblyName>Terradue.ServiceModel.Ogc.OwsContext</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="Terradue.ServiceModel.Syndication">
+      <HintPath>..\packages\Terradue.ServiceModel.Syndication.1.0.0.0\lib\net40\Terradue.ServiceModel.Syndication.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Serialization" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\OwsContext\DateTimeInterval.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\OwsContext\OwcDisplay.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\OwsContext\OwsContextAtomFeed.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\OwsContext\XElementExtensions.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\OwsContext\GeoRss.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\OwsContext\OwsContextAtomEntry.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\OwsContext\OwcOffering.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\OwsContext\OwcOperation.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\OwsContext\OwcContent.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\OwsContext\OwcNamespaces.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\OwsContext\OwcStyleSet.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Schemas\1.0.0\examples\csw_10entries.xml" />
+    <None Include="Schemas\1.0.0\examples\geotiff.xml" />
+    <None Include="Schemas\1.0.0\examples\gml_road.xml" />
+    <None Include="Schemas\1.0.0\examples\gmlcov.xml" />
+    <None Include="Schemas\1.0.0\examples\meris.atom" />
+    <None Include="Schemas\1.0.0\examples\meris_borders_users.atom" />
+    <None Include="Schemas\1.0.0\examples\meris_noauthor.xml" />
+    <None Include="Schemas\1.0.0\examples\meris_noprofile.xml" />
+    <None Include="Schemas\1.0.0\examples\road.xsd" />
+    <None Include="Schemas\1.0.0\examples\sea_ice_extent_01.atom" />
+    <None Include="Schemas\1.0.0\examples\wcs_kml.xml" />
+    <None Include="Schemas\1.0.0\examples\wfs_100entries.xml" />
+    <None Include="Schemas\1.0.0\examples\wms_gml_hurricane_tomas.xml" />
+    <None Include="Schemas\1.0.0\examples\wms_meris.xml" />
+    <None Include="Schemas\1.0.0\examples\wms_scale.xml" />
+    <None Include="Schemas\1.0.0\examples\wmstestdata.xml" />
+    <None Include="Schemas\1.0.0\examples\wmts.xml" />
+    <None Include="Schemas\1.0.0\examples\wps_52north.xml" />
+    <None Include="Schemas\1.0.0\atom_feed.rnc" />
+    <None Include="Schemas\1.0.0\georss.rnc" />
+    <None Include="Schemas\1.0.0\owc.rnc" />
+    <None Include="Schemas\1.0.0\georss.xsd" />
+    <None Include="Schemas\1.0.0\gmlgeorss.xsd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Terradue\" />
+    <Folder Include="Terradue\ServiceModel\" />
+    <Folder Include="Terradue\ServiceModel\Ogc\" />
+    <Folder Include="Terradue\ServiceModel\Ogc\OwsContext\" />
+    <Folder Include="Schemas\" />
+  </ItemGroup>
+</Project>
