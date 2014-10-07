@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Terradue/DotNetOgcOwsContext.svg)]
+![Build Status](https://travis-ci.org/Terradue/DotNetOgcOwsContext.svg)
 
 # DotNetOgcOwsContext - OGC OWS Context library for .Net
 
