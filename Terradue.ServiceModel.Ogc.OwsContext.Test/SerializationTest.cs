@@ -23,36 +23,28 @@ namespace Terradue.ServiceModel.Ogc.OwsContext.Test {
             // display
             OwcDisplay display = new OwcDisplay() { PixelWidth = 800, PixelHeight = 600, MmPerPixel = 100 };
             var displayAny = new System.Collections.Generic.List<XmlElement>();
-
-
             display.Any = displayAny.ToArray();
-
             feed.Display = display;
 
             // date
             DateTimeInterval interval = new DateTimeInterval();
             interval.StartDate = DateTime.Parse("2010-05-30T05:54:34+02");
             interval.EndDate = DateTime.Parse("2010-05-31T20:20:20.000Z");
-
             feed.Date = interval;
 
             // georss
             whereType georss =  whereType.Deserialize("<georss:where xmlns:georss=\"http://www.georss.org/georss/10\">\n<gml:Polygon xmlns:gml=\"http://www.opengis.net/gml\">\n<gml:exterior>\n<gml:LinearRing>\n<gml:posList>45 -2 45 8 55 8 55 -2 45 -2</gml:posList>\n</gml:LinearRing>\n</gml:exterior>\n</gml:Polygon>\n</georss:where>");
-
             feed.Where = georss;
 
             /// entries
             List<OwsContextAtomEntry> items = new List<OwsContextAtomEntry>();
             OwsContextAtomEntry item = new OwsContextAtomEntry();
-
             OwcOffering offering = new OwcOffering();
             List<XmlNode> offeringAny = new List<XmlNode>();
-
             offering.Any = offeringAny.ToArray();
             List<OwcOperation> ops = new List<OwcOperation>();
             ops.Add(new OwcOperation("GetCapabilities", new Uri("http://ows.genesi-dec.eu/geoserver/385d7d71-650a-414b-b8c7-739e2c0b5e76/wms?SERVICE=WMS&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetCapabilitiesVERSION=1.3.0&REQUEST=GetCapabilities")));
             offering.Operations = ops.ToArray();
-
             item.Offering = offering;
             items.Add(item);
 
