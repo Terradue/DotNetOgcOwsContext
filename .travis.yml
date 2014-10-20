@@ -1,9 +1,18 @@
 ## Travis CI Integration
 
-language: c
+language: objective-c
 
-install:
-  - sudo apt-get install mono-devel mono-gmcs nunit-console
+env:
+ global:
+  - EnableNuGetPackageRestore=true 
+ matrix:
+  - MONO_VERSION="3.8.0"
+
+before_install:
+ - wget "http://download.mono-project.com/archive/${MONO_VERSION}/macos-10-x86/MonoFramework-MDK-${MONO_VERSION}.macos10.xamarin.x86.pkg"
+ - sudo installer -pkg "MonoFramework-MDK-${MONO_VERSION}.macos10.xamarin.x86.pkg" -target /
+
 script:
+  - nuget restore
   - xbuild
-  - nunit-console Terradue.ServiceModel.Ogc.OwsContext.Test/bin/Terradue.ServiceModel.Ogc.OwsContext.Test.dll
+  - nunit-console4 Terradue.ServiceModel.Ogc.OwsContext.Test/bin/Terradue.ServiceModel.Ogc.OwsContext.Test.dll
