@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="SerializationTest.cs" />
     <Compile Include="DateTimeIntervalTest.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\OwsContext\Test\RegressionTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -51,5 +52,12 @@
       <Project>{5081E2DA-3358-4E1F-A506-FFB2A853D4AC}</Project>
       <Name>Terradue.ServiceModel.Ogc.OwsContext</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Terradue\" />
+    <Folder Include="Terradue\ServiceModel\" />
+    <Folder Include="Terradue\ServiceModel\Ogc\" />
+    <Folder Include="Terradue\ServiceModel\Ogc\OwsContext\" />
+    <Folder Include="Terradue\ServiceModel\Ogc\OwsContext\Test\" />
   </ItemGroup>
 </Project>

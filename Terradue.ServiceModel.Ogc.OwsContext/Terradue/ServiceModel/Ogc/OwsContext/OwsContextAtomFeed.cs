@@ -49,7 +49,7 @@ namespace Terradue.ServiceModel.Ogc.OwsContext {
                 foreach (var publisher in publishers) {
                     ElementExtensions.Remove(publisher);
                 }
-                ElementExtensions.Add(value);
+                ElementExtensions.Add("publisher", OwcNamespaces.Dc, value);
             }
         }
 
