@@ -46,7 +46,7 @@ namespace Terradue.ServiceModel.Ogc.OwsContext {
                 foreach (var publisher in publishers) {
                     ElementExtensions.Remove(publisher);
                 }
-                ElementExtensions.Add(value);
+                ElementExtensions.Add("publisher", OwcNamespaces.Dc, value);
             }
         }
 
@@ -100,7 +100,7 @@ namespace Terradue.ServiceModel.Ogc.OwsContext {
                 foreach (var minScaleDenominator in minScaleDenominators) {
                     ElementExtensions.Remove(minScaleDenominator);
                 }
-                ElementExtensions.Add(value);
+                ElementExtensions.Add("minScaleDenominator", OwcNamespaces.Dc, value);
             }
         }
 
@@ -118,7 +118,7 @@ namespace Terradue.ServiceModel.Ogc.OwsContext {
                 foreach (var maxScaleDenominator in maxScaleDenominators) {
                     ElementExtensions.Remove(maxScaleDenominator);
                 }
-                ElementExtensions.Add(value);
+                ElementExtensions.Add("maxScaleDenominator", OwcNamespaces.Dc, value);
             }
         }
     }

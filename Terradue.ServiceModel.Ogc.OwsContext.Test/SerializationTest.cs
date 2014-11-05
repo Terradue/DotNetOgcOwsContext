@@ -81,7 +81,7 @@ namespace Terradue.ServiceModel.Ogc.OwsContext.Test {
            
         }
 
-        public void SerializeToStream(SyndicationFeed feed, System.IO.Stream stream) {
+        public static void SerializeToStream(SyndicationFeed feed, System.IO.Stream stream) {
             var sw = XmlWriter.Create(stream, new XmlWriterSettings(){Indent = true, NamespaceHandling = NamespaceHandling.OmitDuplicates});
             Atom10FeedFormatter atomFormatter = new Atom10FeedFormatter(feed);
             atomFormatter.WriteTo(sw);
@@ -89,7 +89,7 @@ namespace Terradue.ServiceModel.Ogc.OwsContext.Test {
             sw.Close();
         }
 
-        public void SerializeToStream(SyndicationFeed feed, TextWriter writer) {
+        public static void SerializeToStream(SyndicationFeed feed, TextWriter writer) {
             var sw = XmlWriter.Create(writer,new XmlWriterSettings(){Indent = true, NamespaceHandling = NamespaceHandling.OmitDuplicates});
             Atom10FeedFormatter atomFormatter = new Atom10FeedFormatter(feed);
             atomFormatter.WriteTo(sw);
