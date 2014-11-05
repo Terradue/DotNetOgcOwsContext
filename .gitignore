@@ -1,10 +1,7 @@
 /packages/
-
 /DotNetOgcOwsContext.userprefs
-
 /Terradue.ServiceModel.Ogc.OwsContext/obj/
 /Terradue.ServiceModel.Ogc.OwsContext/bin/
-
 /Terradue.ServiceModel.Ogc.OwsContext.Test/bin/
-
 /Terradue.ServiceModel.Ogc.OwsContext.Test/obj/
+TestResult.xml

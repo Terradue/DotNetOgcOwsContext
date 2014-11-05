@@ -21,6 +21,6 @@ Global
 		{89251BE1-780F-436F-A6FF-B3905E5B18AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Terradue.ServiceModel.Ogc.OwsContext\Terradue.ServiceModel.Ogc.OwsContext.csproj
+		StartupItem = Terradue.ServiceModel.Ogc.OwsContext.Test\Terradue.ServiceModel.Ogc.OwsContext.Test.csproj
 	EndGlobalSection
 EndGlobal
