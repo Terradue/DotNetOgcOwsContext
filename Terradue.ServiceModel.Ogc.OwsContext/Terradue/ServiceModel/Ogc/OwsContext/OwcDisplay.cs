@@ -20,6 +20,12 @@ namespace Terradue.ServiceModel.Ogc.OwsContext {
             Namespaces.Add(string.Empty, string.Empty);
         }
 
+        public OwcDisplay(Terradue.ServiceModel.Ogc.OwsModel.OwcDisplay display) : this() {
+            this.MmPerPixel = (float)display.MmPerPixel;
+            this.PixelHeight = display.PixelHeight;
+            this.PixelWidth = display.PixelWidth;
+        }
+
         public static XmlSerializer GetSerializer(){
 
             XmlSerializer ser = new XmlSerializer(typeof(OwcDisplay));

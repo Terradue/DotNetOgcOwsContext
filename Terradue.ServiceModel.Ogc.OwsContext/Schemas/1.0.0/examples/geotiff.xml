@@ -26,5 +26,8 @@
 		<owc:offering code="http://www.opengis.net/spec/owc-atom/1.0/req/geotiff">
 			<owc:content type="image/tiff" href="ftp://ftp.remotesensing.org/pub/geotiff/samples/gdal_eg/cea.tif"/>
 		</owc:offering>
+		<owc:offering code="http://www.opengis.net/spec/owc-atom/1.0/req/geotiff">
+			<owc:content type="image/tiff" href="ftp://ftp.remotesensing.org/pub/geotiff/samples/pci_eg/acea.tif"/>
+		</owc:offering>
 	</entry>
 </feed>

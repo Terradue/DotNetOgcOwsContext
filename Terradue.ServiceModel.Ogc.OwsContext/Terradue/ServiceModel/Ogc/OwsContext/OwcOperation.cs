@@ -23,6 +23,12 @@ namespace Terradue.ServiceModel.Ogc.OwsContext {
             this.method = null;
         }
 
+        public OwcOperation(Terradue.ServiceModel.Ogc.OwsModel.OwcOperation operation) : this(operation.Code, operation.RequestURL){
+            this.Method = operation.Method;
+            if(operation.Request != null)
+                this.Result = (operation.Request.Url != null ? new OwcContent(operation.Request.Type, operation.Request.Url) : new OwcContent(operation.Request.Type, operation.Request.Content));
+        }
+
         [System.Xml.Serialization.XmlAttributeAttribute(AttributeName = "code")]
         public string Code {
             get {
