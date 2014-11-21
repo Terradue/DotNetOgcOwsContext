@@ -2,33 +2,29 @@
 using Terradue.ServiceModel.Syndication;
 using System.Linq;
 using System.Xml.Serialization;
+using System.Collections.Generic;
 
 namespace Terradue.ServiceModel.Ogc.OwsContext {
     public class OwsContextAtomEntry : SyndicationItem {
 
 
         public OwsContextAtomEntry() {
+            owcOfferingCollection = new OwcOfferingCollection(this.ElementExtensions);
         }
 
         public OwsContextAtomEntry(SyndicationItem it) : base(it) {
-
+            owcOfferingCollection = new OwcOfferingCollection(this.ElementExtensions);
         }
 
-        public OwcOffering Offering {
+        private OwcOfferingCollection owcOfferingCollection;
+
+        public List<OwcOffering> Offerings {
             get {
-                var offerings = ElementExtensions.ReadElementExtensions<OwcOffering>("offering", OwcNamespaces.Owc, new XmlSerializer(typeof(OwcOffering)));
-                if (offerings.Count() > 0) {
-                    return offerings.First();
-                } else {
-                    return null;
-                }
+                return new List<OwcOffering>(owcOfferingCollection.GetOfferings());
             }
             set {
-                var offerings = ElementExtensions.ReadElementExtensions<SyndicationElementExtension>("offering", OwcNamespaces.Owc);
-                foreach (var offering in offerings) {
-                    ElementExtensions.Remove(offering);
-                }
-                ElementExtensions.Add(value, new XmlSerializer(typeof(OwcOffering)));
+                owcOfferingCollection = new OwcOfferingCollection(this.ElementExtensions);
+                owcOfferingCollection.Add(value);
             }
         }
 

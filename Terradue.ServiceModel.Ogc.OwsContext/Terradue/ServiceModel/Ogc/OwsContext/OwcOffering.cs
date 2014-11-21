@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Terradue.ServiceModel.Ogc.OwsContext {
 
@@ -12,8 +13,27 @@ namespace Terradue.ServiceModel.Ogc.OwsContext {
         string code;
         OwcOperation[] operations;
         OwcContent[] contents;
+        OwcStyleSet[] styleSets;
 
         public OwcOffering() {
+        }
+
+        public OwcOffering(Terradue.ServiceModel.Ogc.OwsModel.OwcOffering offering){
+            if(offering.Code != null) this.Code = offering.Code.AbsoluteUri;
+
+            if (offering.Content != null) {
+                List<OwcContent> contents = new List<OwcContent>();
+                foreach (Terradue.ServiceModel.Ogc.OwsModel.OwcContent c in offering.Content)
+                    contents.Add((c.Url != null ? new OwcContent(c.Type, c.Url) : new OwcContent(c.Type, c.Content)));
+                this.Contents = contents.ToArray();
+            }
+
+            if (offering.Operations != null) {
+                List<OwcOperation> ops = new List<OwcOperation>();
+                foreach (Terradue.ServiceModel.Ogc.OwsModel.OwcOperation o in offering.Operations)
+                    ops.Add(new OwcOperation(o));
+                this.Operations = ops.ToArray();
+            }
         }
 
         [System.Xml.Serialization.XmlAnyElementAttribute(Order = 3)]
