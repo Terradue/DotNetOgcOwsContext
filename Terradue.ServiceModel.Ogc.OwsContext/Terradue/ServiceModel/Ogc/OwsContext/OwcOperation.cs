@@ -95,6 +95,16 @@ namespace Terradue.ServiceModel.Ogc.OwsContext {
             }
         }
 
+        [System.Xml.Serialization.XmlElementAttribute(ElementName = "request", Order = 0)]
+        public OwcContent Request {
+            get {
+                return result;
+            }
+            set {
+                result = value;
+            }
+        }
+
     }
 
 }
