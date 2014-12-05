@@ -7,13 +7,13 @@ namespace Terradue.ServiceModel.Ogc.OwsContext
 
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace = OwcNamespaces.Owc)]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = OwcNamespaces.Owc, IsNullable = false)]
+    [System.Xml.Serialization.XmlRootAttribute(ElementName="content", Namespace = OwcNamespaces.Owc, IsNullable = false)]
 	public class OwcContent
 	{
-        string type;
-        Uri href;
-        string text;
-        XmlNode[] itemsField;
+        private string type;
+        private Uri href;
+        private string text;
+        private XmlNode[] itemsField;
 
         public OwcContent(){
             Text = "";
@@ -66,7 +66,7 @@ namespace Terradue.ServiceModel.Ogc.OwsContext
                 type = value;
             }
         }
-
+            
         [System.Xml.Serialization.XmlTextAttribute()]
         public string Text {
             get {
@@ -79,7 +79,8 @@ namespace Terradue.ServiceModel.Ogc.OwsContext
             }
         }
 
-        [System.Xml.Serialization.XmlAnyElementAttribute(Order = 3)]
+        [System.Xml.Serialization.XmlElement(IsNullable = false)]
+        [System.Xml.Serialization.XmlAnyElementAttribute()]
         public System.Xml.XmlNode[] Any
         {
             get

@@ -70,7 +70,7 @@ namespace Terradue.ServiceModel.Ogc.OwsContext {
             }
         }
 
-        [System.Xml.Serialization.XmlAnyElementAttribute(Order = 3)]
+        [System.Xml.Serialization.XmlAnyElementAttribute()]
         public System.Xml.XmlNode[] Any {
             get {
                 return this.itemsField;
@@ -86,7 +86,7 @@ namespace Terradue.ServiceModel.Ogc.OwsContext {
             }
         }
 
-        [System.Xml.Serialization.XmlElementAttribute(ElementName = "result", Order = 0)]
+        [System.Xml.Serialization.XmlElementAttribute(ElementName = "result")]
         public OwcContent Result {
             get {
                 return result;
@@ -96,7 +96,7 @@ namespace Terradue.ServiceModel.Ogc.OwsContext {
             }
         }
 
-        [System.Xml.Serialization.XmlElementAttribute(ElementName = "request", Order = 0)]
+        [System.Xml.Serialization.XmlElementAttribute(ElementName = "request")]
         public OwcContent Request {
             get {
                 return request;
