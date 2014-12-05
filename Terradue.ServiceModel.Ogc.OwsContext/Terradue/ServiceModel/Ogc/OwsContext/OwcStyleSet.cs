@@ -29,7 +29,7 @@ namespace Terradue.ServiceModel.Ogc.OwsContext {
             }
         }
 
-        [System.Xml.Serialization.XmlElementAttribute(ElementName = "name", Order = 0)]
+        [System.Xml.Serialization.XmlElementAttribute(ElementName = "name")]
         public string Name {
             get {
                 return name;
@@ -39,7 +39,7 @@ namespace Terradue.ServiceModel.Ogc.OwsContext {
             }
         }
 
-        [System.Xml.Serialization.XmlElementAttribute(ElementName = "title", Order = 1)]
+        [System.Xml.Serialization.XmlElementAttribute(ElementName = "title")]
         public string Title {
             get {
                 return title;
@@ -49,7 +49,7 @@ namespace Terradue.ServiceModel.Ogc.OwsContext {
             }
         }
 
-        [System.Xml.Serialization.XmlElementAttribute(ElementName = "abstract", Order = 2)]
+        [System.Xml.Serialization.XmlElementAttribute(ElementName = "abstract")]
         public string Abstract {
             get {
                 return abstractEl;
@@ -59,7 +59,7 @@ namespace Terradue.ServiceModel.Ogc.OwsContext {
             }
         }
 
-        [System.Xml.Serialization.XmlElementAttribute(ElementName = "legendUrl", Order = 2)]
+        [System.Xml.Serialization.XmlElementAttribute(ElementName = "legendUrl")]
         public OwcLegenUrl LegendUrl {
             get {
                 return legendUrl;
@@ -69,7 +69,7 @@ namespace Terradue.ServiceModel.Ogc.OwsContext {
             }
         }
 
-        [System.Xml.Serialization.XmlAnyElementAttribute(Order = 3)]
+        [System.Xml.Serialization.XmlAnyElementAttribute()]
         public System.Xml.XmlNode[] Any
         {
             get
@@ -82,7 +82,7 @@ namespace Terradue.ServiceModel.Ogc.OwsContext {
             }
         }
 
-        [System.Xml.Serialization.XmlElementAttribute(ElementName = "content", Order = 4)]
+        [System.Xml.Serialization.XmlElementAttribute(ElementName = "content")]
         public OwcContent[] Contents {
             get {
                 return contents;

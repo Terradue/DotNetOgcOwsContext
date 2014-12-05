@@ -36,7 +36,7 @@ namespace Terradue.ServiceModel.Ogc.OwsContext {
         [System.Xml.Serialization.XmlNamespaceDeclarations] 
         public XmlSerializerNamespaces Namespaces;
 
-        [System.Xml.Serialization.XmlElementAttribute(ElementName = "pixelWidth", Order = 0)]
+        [System.Xml.Serialization.XmlElementAttribute(ElementName = "pixelWidth")]
         public int PixelWidth {
             get {
                 return pixelWidth;
@@ -46,7 +46,7 @@ namespace Terradue.ServiceModel.Ogc.OwsContext {
             }
         }
 
-        [System.Xml.Serialization.XmlElementAttribute(ElementName = "pixelHeight", Order = 1)]
+        [System.Xml.Serialization.XmlElementAttribute(ElementName = "pixelHeight")]
         public int PixelHeight {
             get {
                 return pixelHeight;
@@ -56,7 +56,7 @@ namespace Terradue.ServiceModel.Ogc.OwsContext {
             }
         }
 
-        [System.Xml.Serialization.XmlElementAttribute(ElementName = "mmPerPixel", Order = 2)]
+        [System.Xml.Serialization.XmlElementAttribute(ElementName = "mmPerPixel")]
         public float MmPerPixel {
             get {
                 return mmPerPixel;
@@ -66,7 +66,7 @@ namespace Terradue.ServiceModel.Ogc.OwsContext {
             }
         }
 
-        [System.Xml.Serialization.XmlAnyElementAttribute(Order = 3)]
+        [System.Xml.Serialization.XmlAnyElementAttribute()]
         public System.Xml.XmlNode[] Any
         {
             get
