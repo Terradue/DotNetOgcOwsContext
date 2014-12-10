@@ -13,6 +13,7 @@ namespace Terradue.ServiceModel.Ogc.OwsContext {
         private System.Xml.XmlNode[] itemsField;
 
         OwcContent result;
+        OwcContent request;
 
         public OwcOperation() {
         }
@@ -21,6 +22,12 @@ namespace Terradue.ServiceModel.Ogc.OwsContext {
             this.href = href;
             this.code = code;
             this.method = null;
+        }
+
+        public OwcOperation(Terradue.ServiceModel.Ogc.OwsModel.OwcOperation operation) : this(operation.Code, operation.RequestURL){
+            this.Method = operation.Method;
+            if(operation.Request != null)
+                this.Request = (operation.Request.Url != null ? new OwcContent(operation.Request.Type, operation.Request.Url) : new OwcContent(operation.Request.Type, operation.Request.Content));
         }
 
         [System.Xml.Serialization.XmlAttributeAttribute(AttributeName = "code")]
@@ -63,7 +70,7 @@ namespace Terradue.ServiceModel.Ogc.OwsContext {
             }
         }
 
-        [System.Xml.Serialization.XmlAnyElementAttribute(Order = 3)]
+        [System.Xml.Serialization.XmlAnyElementAttribute()]
         public System.Xml.XmlNode[] Any {
             get {
                 return this.itemsField;
@@ -79,13 +86,23 @@ namespace Terradue.ServiceModel.Ogc.OwsContext {
             }
         }
 
-        [System.Xml.Serialization.XmlElementAttribute(ElementName = "result", Order = 0)]
+        [System.Xml.Serialization.XmlElementAttribute(ElementName = "result")]
         public OwcContent Result {
             get {
                 return result;
             }
             set {
                 result = value;
+            }
+        }
+
+        [System.Xml.Serialization.XmlElementAttribute(ElementName = "request")]
+        public OwcContent Request {
+            get {
+                return request;
+            }
+            set {
+                request = value;
             }
         }
 

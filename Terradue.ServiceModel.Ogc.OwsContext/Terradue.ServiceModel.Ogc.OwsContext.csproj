@@ -7,7 +7,6 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Terradue.ServiceModel.Ogc.OwsContext</RootNamespace>
     <AssemblyName>Terradue.ServiceModel.Ogc.OwsContext</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,7 +34,6 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Xml.Serialization" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -50,6 +48,14 @@
     <Compile Include="Terradue\ServiceModel\Ogc\OwsContext\OwcContent.cs" />
     <Compile Include="Terradue\ServiceModel\Ogc\OwsContext\OwcNamespaces.cs" />
     <Compile Include="Terradue\ServiceModel\Ogc\OwsContext\OwcStyleSet.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\OwsModel\OwcContent.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\OwsModel\OwcCreator.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\OwsModel\OwcOffering.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\OwsModel\OwcOperation.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\OwsModel\OwcResource.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\OwsModel\OwcStyleSet.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\OwsModel\OwsContext.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\OwsContext\OwcOfferingCollection.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -85,5 +91,6 @@
     <Folder Include="Terradue\ServiceModel\Ogc\" />
     <Folder Include="Terradue\ServiceModel\Ogc\OwsContext\" />
     <Folder Include="Schemas\" />
+    <Folder Include="Terradue\ServiceModel\Ogc\OwsModel\" />
   </ItemGroup>
 </Project>

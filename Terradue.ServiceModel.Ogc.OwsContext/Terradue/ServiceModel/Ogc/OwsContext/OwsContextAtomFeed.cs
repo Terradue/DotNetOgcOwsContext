@@ -4,22 +4,22 @@ using System.Linq;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 using System.Collections.Generic;
+using Terradue.ServiceModel.Ogc.OwsModel;
 
 namespace Terradue.ServiceModel.Ogc.OwsContext {
     public class OwsContextAtomFeed : SyndicationFeed {
 
         public OwsContextAtomFeed() : base() {
-
             AttributeExtensions.Add(new System.Xml.XmlQualifiedName("owc", XNamespace.Xmlns.NamespaceName), OwcNamespaces.Owc);
-
         }
 
         public OwsContextAtomFeed(SyndicationFeed feed, bool cloneItems) : base(feed, cloneItems) {
+            AttributeExtensions.Add(new System.Xml.XmlQualifiedName("owc", XNamespace.Xmlns.NamespaceName), OwcNamespaces.Owc);
         }
 
         public OwcDisplay Display {
             get {
-                var displays = ElementExtensions.ReadElementExtensions<OwcDisplay>("dispay", OwcNamespaces.Owc, new XmlSerializer(typeof(OwcDisplay)));
+                var displays = ElementExtensions.ReadElementExtensions<OwcDisplay>("display", OwcNamespaces.Owc, new XmlSerializer(typeof(OwcDisplay)));
                 if (displays.Count() > 0) {
                     return displays.First();
                 } else {
@@ -27,7 +27,7 @@ namespace Terradue.ServiceModel.Ogc.OwsContext {
                 }
             }
             set {
-                var displays = ElementExtensions.ReadElementExtensions<SyndicationElementExtension>("dispay", OwcNamespaces.Owc);
+                var displays = ElementExtensions.ReadElementExtensions<SyndicationElementExtension>("display", OwcNamespaces.Owc);
                 foreach (var display in displays) {
                     ElementExtensions.Remove(display);
                 }

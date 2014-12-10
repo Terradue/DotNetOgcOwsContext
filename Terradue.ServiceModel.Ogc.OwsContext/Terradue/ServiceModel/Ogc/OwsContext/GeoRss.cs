@@ -860,7 +860,7 @@ namespace Terradue.ServiceModel.Ogc.OwsContext
             this.numArcField = "1";
         }
 
-        [System.Xml.Serialization.XmlElementAttribute("pos", Order = 0)]
+        [System.Xml.Serialization.XmlElementAttribute("pos")]
         public DirectPositionType Item
         {
             get
@@ -873,7 +873,7 @@ namespace Terradue.ServiceModel.Ogc.OwsContext
             }
         }
 
-        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
+        [System.Xml.Serialization.XmlElementAttribute()]
         public LengthType radius
         {
             get
@@ -1613,8 +1613,8 @@ namespace Terradue.ServiceModel.Ogc.OwsContext
             this.itemsField = new List<DirectPositionType>();
         }
 
-        [System.Xml.Serialization.XmlElementAttribute("lowerCorner", typeof(DirectPositionType), Order = 0)]
-        [System.Xml.Serialization.XmlElementAttribute("upperCorner", typeof(DirectPositionType), Order = 0)]
+        [System.Xml.Serialization.XmlElementAttribute("lowerCorner", typeof(DirectPositionType))]
+        [System.Xml.Serialization.XmlElementAttribute("upperCorner", typeof(DirectPositionType))]
         //[System.Xml.Serialization.XmlChoiceIdentifierAttribute("ItemsElementName")]
         public List<DirectPositionType> Items
         {
@@ -1628,7 +1628,7 @@ namespace Terradue.ServiceModel.Ogc.OwsContext
             }
         }
 
-        [System.Xml.Serialization.XmlElementAttribute("ItemsElementName", Order = 1)]
+        [System.Xml.Serialization.XmlElementAttribute("ItemsElementName")]
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         public List<ItemsChoiceType> ItemsElementName
         {
@@ -1883,7 +1883,7 @@ namespace Terradue.ServiceModel.Ogc.OwsContext
             this.itemField = new LinearRingType();
         }
 
-        [System.Xml.Serialization.XmlElementAttribute("LinearRing", Order = 0)]
+        [System.Xml.Serialization.XmlElementAttribute("LinearRing")]
         public LinearRingType Item
         {
             get
@@ -2098,7 +2098,7 @@ namespace Terradue.ServiceModel.Ogc.OwsContext
             this.itemField = new DirectPositionListType();
         }
 
-        [System.Xml.Serialization.XmlElementAttribute("posList", Order = 0)]
+        [System.Xml.Serialization.XmlElementAttribute("posList")]
         public DirectPositionListType Item
         {
             get
@@ -3616,7 +3616,7 @@ namespace Terradue.ServiceModel.Ogc.OwsContext
             this.exteriorField = new AbstractRingPropertyType();
         }
 
-        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+        [System.Xml.Serialization.XmlElementAttribute()]
         public AbstractRingPropertyType exterior
         {
             get
@@ -4027,7 +4027,7 @@ namespace Terradue.ServiceModel.Ogc.OwsContext
             this.itemField = new DirectPositionListType();
         }
 
-        [System.Xml.Serialization.XmlElementAttribute("posList", Order = 0)]
+        [System.Xml.Serialization.XmlElementAttribute("posList")]
         public DirectPositionListType Item
         {
             get
@@ -4242,7 +4242,7 @@ namespace Terradue.ServiceModel.Ogc.OwsContext
             this.itemField = new DirectPositionType();
         }
 
-        [System.Xml.Serialization.XmlElementAttribute("pos", Order = 0)]
+        [System.Xml.Serialization.XmlElementAttribute("pos")]
         public DirectPositionType Item
         {
             get
@@ -4453,11 +4453,11 @@ namespace Terradue.ServiceModel.Ogc.OwsContext
 
         private static System.Xml.Serialization.XmlSerializer serializer;
 
-        [System.Xml.Serialization.XmlElementAttribute("CircleByCenterPoint", typeof(CircleByCenterPointType), Namespace = "http://www.opengis.net/gml", Order = 0)]
-        [System.Xml.Serialization.XmlElementAttribute("Envelope", typeof(EnvelopeType), Namespace = "http://www.opengis.net/gml", Order = 0)]
-        [System.Xml.Serialization.XmlElementAttribute("LineString", typeof(LineStringType), Namespace = "http://www.opengis.net/gml", Order = 0)]
-        [System.Xml.Serialization.XmlElementAttribute("Point", typeof(PointType), Namespace = "http://www.opengis.net/gml", Order = 0)]
-        [System.Xml.Serialization.XmlElementAttribute("Polygon", typeof(PolygonType), Namespace = "http://www.opengis.net/gml", Order = 0)]
+        [System.Xml.Serialization.XmlElementAttribute("CircleByCenterPoint", typeof(CircleByCenterPointType), Namespace = "http://www.opengis.net/gml")]
+        [System.Xml.Serialization.XmlElementAttribute("Envelope", typeof(EnvelopeType), Namespace = "http://www.opengis.net/gml")]
+        [System.Xml.Serialization.XmlElementAttribute("LineString", typeof(LineStringType), Namespace = "http://www.opengis.net/gml")]
+        [System.Xml.Serialization.XmlElementAttribute("Point", typeof(PointType), Namespace = "http://www.opengis.net/gml")]
+        [System.Xml.Serialization.XmlElementAttribute("Polygon", typeof(PolygonType), Namespace = "http://www.opengis.net/gml")]
         public object Item
         {
             get
