@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Terradue.ServiceModel.Ogc.OwsContext</id>
-    <version>1.0.4</version>
+    <version>1.0.5</version>
     <title>Terradue.ServiceModel.Ogc.OwsContext</title>
     <authors>Terradue</authors>
     <projectUrl>https://github.com/Terradue/DotNetOgcOwsContext</projectUrl>
