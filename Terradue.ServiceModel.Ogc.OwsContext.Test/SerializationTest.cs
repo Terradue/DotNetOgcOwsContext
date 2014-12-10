@@ -45,6 +45,7 @@ namespace Terradue.ServiceModel.Ogc.OwsContext.Test {
             offering.Any = offeringAny.ToArray();
             List<OwcOperation> ops = new List<OwcOperation>();
             ops.Add(new OwcOperation("GetCapabilities", new Uri("http://ows.genesi-dec.eu/geoserver/385d7d71-650a-414b-b8c7-739e2c0b5e76/wms?SERVICE=WMS&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetCapabilitiesVERSION=1.3.0&REQUEST=GetCapabilities")));
+            ops.Add(new OwcOperation("GetCapabilities2", new Uri("http://ows.genesi-dec.eu/geoserver/385d7d71-650a-414b-b8c7-739e2c0b5e76/wms?SERVICE=WMS&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetCapabilitiesVERSION=1.3.0&REQUEST=GetCapabilities")));
             offering.Operations = ops.ToArray();
             offerings.Add(offering);
             item.Offerings = offerings;

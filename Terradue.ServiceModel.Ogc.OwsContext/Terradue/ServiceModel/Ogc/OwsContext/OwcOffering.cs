@@ -66,7 +66,6 @@ namespace Terradue.ServiceModel.Ogc.OwsContext {
             }
         }
             
-        [System.Xml.Serialization.XmlArray()]
         [System.Xml.Serialization.XmlElementAttribute(ElementName = "content")]
         public OwcContent[] Contents {
             get {

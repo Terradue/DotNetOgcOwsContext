@@ -2,6 +2,7 @@ using System;
 using Terradue.ServiceModel.Syndication;
 
 namespace Terradue.ServiceModel.Ogc.OwsContext {
+
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace = OwcNamespaces.Owc)]
     [System.Xml.Serialization.XmlRootAttribute("operation", Namespace = OwcNamespaces.Owc, IsNullable = false)]

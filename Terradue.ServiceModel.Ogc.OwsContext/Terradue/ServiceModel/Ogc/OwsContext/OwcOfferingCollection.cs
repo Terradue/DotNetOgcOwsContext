@@ -20,7 +20,7 @@ namespace Terradue.ServiceModel.Ogc.OwsContext {
         }
 
         public void Add(List<OwcOffering> items){
-            foreach(OwcOffering item in items) elementExtensions.Add("offering", OwcNamespaces.Owc, item);
+            foreach(OwcOffering item in items) elementExtensions.Add(item, new XmlSerializer(typeof(OwcOffering)));
         }
 
         public void Clear() {
