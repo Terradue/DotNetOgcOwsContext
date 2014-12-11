@@ -38,6 +38,8 @@ namespace Terradue.ServiceModel.Ogc.OwsContext
         [System.Xml.Serialization.XmlAttributeAttribute(AttributeName = "href")]
         public string Url {
             get {
+                if (Href == null)
+                    return null;
                 return Href.ToString();
             }
             set {
@@ -79,7 +81,6 @@ namespace Terradue.ServiceModel.Ogc.OwsContext
             }
         }
 
-        [System.Xml.Serialization.XmlElement(IsNullable = false)]
         [System.Xml.Serialization.XmlAnyElementAttribute()]
         public System.Xml.XmlNode[] Any
         {

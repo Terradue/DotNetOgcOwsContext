@@ -146,6 +146,65 @@ namespace Terradue.ServiceModel.Ogc.OwsContext.Test {
            
         }
 
+        [Test()]
+        public void SerializeWithAny() {
+
+            OwsContextAtomFeed feed = new OwsContextAtomFeed();
+            OwsContextAtomEntry entry = new OwsContextAtomEntry();
+            var items = new List<OwsContextAtomEntry>();
+
+            items.Add(entry);
+
+            var offering = new OwcOffering();
+
+            List<OwcOperation> operations = new List<OwcOperation>();
+
+            Uri executeUri = new Uri("http://localhost/wps?");
+
+            Terradue.ServiceModel.Ogc.OwsContext.OwcOperation operation = new OwcOperation{ Method = "POST", Code = "Execute", Href = executeUri };
+
+            List<KeyValuePair<string, string>> Parameters = new List<KeyValuePair<string, string>>();
+            Parameters.Add(new KeyValuePair<string, string>("manu", "test"));
+
+            OpenGis.Wps.Execute execute = new OpenGis.Wps.Execute();
+            execute.Identifier = new OpenGis.Wps.CodeType{ Value = "id" };
+            execute.DataInputs = new List<OpenGis.Wps.InputType>();
+            foreach (var param in Parameters) {
+                OpenGis.Wps.InputType input = new OpenGis.Wps.InputType();
+                input.Identifier = new OpenGis.Wps.CodeType{ Value = param.Key };
+                input.Data = new OpenGis.Wps.DataType{ Item = new OpenGis.Wps.LiteralDataType{ Value = param.Value } };
+                execute.DataInputs.Add(input);
+            }
+
+
+            MemoryStream ms = new MemoryStream();
+            XmlWriter writer = XmlWriter.Create(ms);
+
+            new System.Xml.Serialization.XmlSerializer(typeof(OpenGis.Wps.Execute)).Serialize(writer, execute);
+            writer.Flush();
+            ms.Seek(0, SeekOrigin.Begin);
+            XmlDocument doc = new XmlDocument();
+            doc.Load(ms);
+
+            List<XmlNode> nodes = new List<XmlNode>();
+            nodes.Add(doc.DocumentElement.CloneNode(true));
+
+            operation.Request = new OwcContent();
+            ((OwcContent)operation.Request).Any = nodes.ToArray();
+            operations.Add(operation);
+            offering.Operations = operations.ToArray();
+            entry.Offerings = new List<OwcOffering>{ offering };
+            entry.Categories.Add(new SyndicationCategory("WpsOffering"));
+
+            entry.Summary = new TextSyndicationContent("summary");
+            entry.ElementExtensions.Add("identifier", "http://purl.org/dc/elements/1.1/", "id");
+
+            feed.Items = items;
+
+            SerializeToStream(feed, Console.Out);
+
+        }
+
         public static void SerializeToStream(SyndicationFeed feed, System.IO.Stream stream) {
             var sw = XmlWriter.Create(stream, new XmlWriterSettings(){Indent = true, NamespaceHandling = NamespaceHandling.OmitDuplicates});
             Atom10FeedFormatter atomFormatter = new Atom10FeedFormatter(feed);
