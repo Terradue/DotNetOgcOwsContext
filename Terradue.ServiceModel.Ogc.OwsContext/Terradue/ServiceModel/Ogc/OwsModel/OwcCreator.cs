@@ -5,18 +5,22 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
     /// This datatype class provides place to encode information related to the creator of the context document. 
     /// It includes the creator application and any relevant properties or settings for the application. 
     /// </summary>
+    /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
+    /// \ingroup OWSContext
     public class OwcCreator {
 
         /// <summary>
         /// The name, reference and version of the creator application used to create the context document
         /// </summary>
         /// <value>The creator application.</value>
+        /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
         public OwcApplication CreatorApplication { get; set; }
 
         /// <summary>
         /// Properties of the display in use when the context document was created (for display based applications only).
         /// </summary>
         /// <value>The creator display.</value>
+        /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
         public OwcDisplay CreatorDisplay { get; set; }
 
         /// <summary>
@@ -34,6 +38,7 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
     /// <summary>
     /// This datatype class provides place to encode information related to the creator context when the document was produced. It includes the creator application and relevant properties or settings for the application.
     /// </summary>
+    /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
     public class OwcApplication {
 
         /// <summary>
@@ -68,6 +73,7 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
     /// within creator display are intended as supporting information (metadata) for clients and 
     /// not properties which should control the display size of the client opening the document.
     /// </summary>
+    /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
     public class OwcDisplay {
 
         /// <summary>

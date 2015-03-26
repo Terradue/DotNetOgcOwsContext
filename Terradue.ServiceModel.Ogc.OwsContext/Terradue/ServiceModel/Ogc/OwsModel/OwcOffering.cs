@@ -9,6 +9,8 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
     /// of the OWS Context core specification. Each specific service binding is defined by a URI 
     /// which references a requirement class.
     /// </summary>
+    /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
+    /// \ingroup OWSContext
     public class OwcOffering {
 
         /// <summary>
@@ -21,12 +23,14 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
         /// Operations used to invoke the service
         /// </summary>
         /// <value>The operation.</value>
+        /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
         public List<OwcOperation> Operations { get; set; }
 
         /// <summary>
         /// inline content
         /// </summary>
         /// <value>The content.</value>
+        /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
         public List<OwcContent> Content { get; set; }
 
         /// <summary>

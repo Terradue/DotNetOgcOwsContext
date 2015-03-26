@@ -3,10 +3,39 @@ using System.Collections.Generic;
 using Terradue.ServiceModel.Ogc.OwsContext;
 using Terradue.ServiceModel.Syndication;
 
+
+/*!
+\defgroup OWSContext OWS Context
+@{
+
+A ‘context document’ specifies a fully configured service set which can be exchanged (with a consistent interpretation) among clients supporting the standard. 
+The OGC Web Services Context Document (OWS Context) was created to allow a set of configured information resources (service set)
+to be passed between applications primarily as a collection of services. OWS Context is developed to support in-line content as well. 
+The goal is to support use cases such as the distribution of search results, the exchange of a set of resources such as 
+OGC Web Feature Service (WFS), Web Map Service (WMS), Web Map Tile Service (WMTS), Web Coverage Service (WCS) and others in a 
+‘common operating picture’. Additionally OWS Context can deliver a set of configured processing services (Web Processing Service (WPS))
+parameters to allow the processing to be reproduced on different nodes. 
+
+This components provides with the representation of entities in the system into OWS compliant
+entry in a syndication feed (e.g. ATOM)
+
+# OGC Resources
+- [OGC OWS Context Conceptual Model](https://portal.opengeospatial.org/files/?artifact_id=55182)
+- [OGC OWS Context Atom Encoding Standard](https://portal.opengeospatial.org/files/?artifact_id=55183)
+
+\xrefitem mvc_v "View" "View components"
+
+\xrefitem dep "Dependencies" "Dependencies" \ref Syndication is extended with OWS model.
+
+@}
+*/
+
 namespace Terradue.ServiceModel.Ogc.OwsModel {
     /// <summary>
     /// This class is the overall container class for the OWS context document.
     /// </summary>
+    /// \ingroup OWSContext
+    /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
     public class OwsContext {
 
         /// <summary>
@@ -49,18 +78,21 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
         /// Identifier for the author of the document
         /// </summary>
         /// <value>The author.</value>
+        /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
         public List<string> Authors { get; set; }
 
         /// <summary>
         /// Identifier for the publisher of the document
         /// </summary>
         /// <value>The publisher.</value>
+        /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
         public string Publisher { get; set; }
 
         /// <summary>
         /// The tool/application used to create the context document and its properties
         /// </summary>
         /// <value>The creator.</value>
+        /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
         public OwcCreator Creator { get; set; }
 
         /// <summary>
@@ -91,12 +123,14 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
         /// The description of a resource and its access parameters and configuration
         /// </summary>
         /// <value>The resource.</value>
+        /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
         public List<OwcResource> Resources { get; set; }
 
         /// <summary>
         /// Additional metadata describing the context document itself. The format recommendation is ISO19115 complaint metadata. The metadata standard used should be specified
         /// </summary>
         /// <value>The context metadata.</value>
+        /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
         public object ContextMetadata { get; set; }
 
         /// <summary>

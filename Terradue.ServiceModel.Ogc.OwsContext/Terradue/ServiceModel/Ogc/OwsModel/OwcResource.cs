@@ -14,6 +14,8 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
     /// equivalent, i.e. alternative representations of the same information (they can for example 
     /// have different resolutions but should not show fundamentally different information).
     /// </summary>
+    /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
+    /// \ingroup OWSContext
     public class OwcResource {
 
         /// <summary>
@@ -87,6 +89,7 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
         /// Service or inline content offering for the resource targeted at OGC compliant clients
         /// </summary>
         /// <value>The offering.</value>
+        /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
         public List<OwcOffering> Offerings { get; set; }
 
         /// <summary>

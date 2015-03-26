@@ -1,6 +1,12 @@
 ﻿using System;
 
 namespace Terradue.ServiceModel.Ogc.OwsModel {
+
+    /// <summary>
+    /// Content.
+    /// </summary>
+    /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
+    /// \ingroup OWSContext
     public class OwcContent {
 
         /// <summary>
