@@ -16,16 +16,12 @@ OGC Web Feature Service (WFS), Web Map Service (WMS), Web Map Tile Service (WMTS
 ‘common operating picture’. Additionally OWS Context can deliver a set of configured processing services (Web Processing Service (WPS))
 parameters to allow the processing to be reproduced on different nodes. 
 
-This components provides with the representation of entities in the system into OWS compliant
-entry in a syndication feed (e.g. ATOM)
-
-
 \xrefitem norm "Normative References" "Normative References" [OGC OWS Context Conceptual Model](https://portal.opengeospatial.org/files/?artifact_id=55182)
 \xrefitem norm "Normative References" "Normative References" [OGC OWS Context Atom Encoding Standard](https://portal.opengeospatial.org/files/?artifact_id=55183)
 
-\xrefitem mvc_v "View" "View components"
+\xrefitem cptype_sm "ServiceModel" "Service Models"
 
-\xrefitem dep "Dependencies" "Dependencies" \ref Syndication is extended with OWS model.
+\xrefitem cpgroup_model "Model" "Models"
 
 @}
 */

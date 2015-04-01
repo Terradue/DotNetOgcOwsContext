@@ -7,7 +7,20 @@ using System.Collections.Generic;
 using Terradue.ServiceModel.Ogc.OwsModel;
 
 
+/*!
+\defgroup OWSContextAtomFeed OWS Context Document
+@{
+This components provides with the representation of entities in the system into \ref OWSContext compliant
+entry in a \ref Syndication feed (typically \ref Atom)
 
+\xrefitem cptype_document "Document" "Documents" represents \ref OWSContext
+
+\xrefitem cpgroup_model "Model" "Models"
+
+\xrefitem dep "Dependencies" "Dependencies" extends \ref Syndication with OWS model.
+
+@}
+*/
 
 namespace Terradue.ServiceModel.Ogc.OwsContext {
     public class OwsContextAtomFeed : SyndicationFeed {
