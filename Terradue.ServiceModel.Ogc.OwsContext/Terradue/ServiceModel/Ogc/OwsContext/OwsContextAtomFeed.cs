@@ -17,8 +17,6 @@ entry in a \ref Syndication feed (typically \ref Atom)
 
 \xrefitem cpgroup_model "Model" "Models"
 
-\xrefitem dep "Dependencies" "Dependencies" extends \ref Syndication with OWS model.
-
 @}
 */
 

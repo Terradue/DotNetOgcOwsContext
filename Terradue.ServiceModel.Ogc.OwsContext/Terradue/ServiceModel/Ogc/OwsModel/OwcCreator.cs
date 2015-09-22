@@ -12,14 +12,14 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
         /// <summary>
         /// The name, reference and version of the creator application used to create the context document
         /// </summary>
-        /// <value>The creator application.</value>
+        /// \return created on \ref OwcApplication at the moment the ows document was generated
         /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
         public OwcApplication CreatorApplication { get; set; }
 
         /// <summary>
         /// Properties of the display in use when the context document was created (for display based applications only).
         /// </summary>
-        /// <value>The creator display.</value>
+        /// \return displayed on \ref OwcDisplay at the moment the ows document was generated
         /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
         public OwcDisplay CreatorDisplay { get; set; }
 

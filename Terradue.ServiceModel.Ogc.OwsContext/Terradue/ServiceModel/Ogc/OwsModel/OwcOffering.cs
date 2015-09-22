@@ -22,14 +22,14 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
         /// <summary>
         /// Operations used to invoke the service
         /// </summary>
-        /// <value>The operation.</value>
+        /// \return offers \ref OwcOperation as a list of operations available to invoke the service</value>
         /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
         public List<OwcOperation> Operations { get; set; }
 
         /// <summary>
         /// inline content
         /// </summary>
-        /// <value>The content.</value>
+        /// \return offers \ref OwcContent as a list of inline contents
         /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
         public List<OwcContent> Content { get; set; }
 

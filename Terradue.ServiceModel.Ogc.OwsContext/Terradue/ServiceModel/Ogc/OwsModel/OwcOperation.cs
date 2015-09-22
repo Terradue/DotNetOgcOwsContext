@@ -38,7 +38,7 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
         /// <summary>
         /// Optional request body content
         /// </summary>
-        /// <value>The request.</value>
+        /// \return is invoked with \ref OwcContent that is the body of the requets to send along with service invokation</value>
         /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
         public OwcContent Request { get; set; }
 

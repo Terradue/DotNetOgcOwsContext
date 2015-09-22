@@ -17,11 +17,12 @@ OGC Web Feature Service (WFS), Web Map Service (WMS), Web Map Tile Service (WMTS
 parameters to allow the processing to be reproduced on different nodes. 
 
 \xrefitem norm "Normative References" "Normative References" [OGC OWS Context Conceptual Model](https://portal.opengeospatial.org/files/?artifact_id=55182)
+
 \xrefitem norm "Normative References" "Normative References" [OGC OWS Context Atom Encoding Standard](https://portal.opengeospatial.org/files/?artifact_id=55183)
 
 \xrefitem cptype_sm "ServiceModel" "Service Models"
 
-\xrefitem cpgroup_model "Model" "Models"
+\ingroup Model
 
 @}
 */
@@ -56,18 +57,21 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
         /// A Human Readable Title for the OWS Context Document
         /// </summary>
         /// <value>The title.</value>
+        /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
         public string Title { get; set; }
 
         /// <summary>
         /// Description of the Context Document Purpose/Content 
         /// </summary>
         /// <value>The abstract.</value>
+        /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
         public string Abstract { get; set; }
 
         /// <summary>
         /// Date when the Context Document was updated
         /// </summary>
         /// <value>The update date.</value>
+        /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
         public DateTimeOffset UpdateDate { get; set; }
 
         /// <summary>
@@ -87,7 +91,7 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
         /// <summary>
         /// The tool/application used to create the context document and its properties
         /// </summary>
-        /// <value>The creator.</value>
+        /// \return references \ref OwcCreator as the the tool or application used to create the context document and its properties.</value>
         /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
         public OwcCreator Creator { get; set; }
 
@@ -118,7 +122,7 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
         /// <summary>
         /// The description of a resource and its access parameters and configuration
         /// </summary>
-        /// <value>The resource.</value>
+        /// \return contains \ref OwcResource that describe resources and their access parameters and configuration</value>
         /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
         public List<OwcResource> Resources { get; set; }
 

@@ -1,6 +1,24 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 
+
+/*!
+
+\namespace Terradue.ServiceModel.Ogc.OwsContext
+@{
+    DotNetOgcOwsContext Software Package
+
+    \xrefitem sw_version "Versions" "Software Package Version" 1.0.6
+
+    \xrefitem sw_link "Link" "Software Package Link" [DotNetOgcOwsContext](https://github.com/Terradue/DotNetOgcOwsContext)
+
+    \xrefitem sw_license "License" "Software License" [GPLv3](https://github.com/Terradue/DotNetOgcOwsContext/blob/master/LICENSE)
+
+    \ingroup Model
+@}
+
+*/
+
 // Information about this assembly is defined by the following attributes.
 // Change them to the values specific to your project.
 
