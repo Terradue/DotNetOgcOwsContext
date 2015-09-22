@@ -17,6 +17,8 @@ entry in a \ref Syndication feed (typically \ref Atom)
 
 \xrefitem cpgroup_model "Model" "Models"
 
+\ingroup Model
+
 @}
 */
 
