@@ -6,13 +6,15 @@ using System.Runtime.CompilerServices;
 
 \namespace Terradue.ServiceModel.Ogc.OwsContext
 @{
-    DotNetOgcOwsContext Software Package
+    Terradue .Net C# library implementing the OGC Ows Context Conceptual Model and Atom Representation
 
     \xrefitem sw_version "Versions" "Software Package Version" 1.0.6
 
     \xrefitem sw_link "Link" "Software Package Link" [DotNetOgcOwsContext](https://github.com/Terradue/DotNetOgcOwsContext)
 
     \xrefitem sw_license "License" "Software License" [GPLv3](https://github.com/Terradue/DotNetOgcOwsContext/blob/master/LICENSE)
+
+    \xrefitem sw_req "Require" "Software Dependencies" \ref Terradue.ServiceModel.Syndication
 
     \ingroup Model
 @}
