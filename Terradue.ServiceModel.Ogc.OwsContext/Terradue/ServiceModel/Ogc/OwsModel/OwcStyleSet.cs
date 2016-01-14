@@ -1,10 +1,11 @@
 ﻿using System;
 
 namespace Terradue.ServiceModel.Ogc.OwsModel {
-    /// <summary>
+    /// <summary>OWS StyleSet</summary>
+    /// <description>
     /// This datatype class defines a portrayal style for a resource content or serviceContent element. 
     /// It can be specified at a resource level or at a service offering level (when it only applies to the offering).
-    /// </summary>
+    /// </description>
     public class OwcStyleSet {
 
         /// <summary>

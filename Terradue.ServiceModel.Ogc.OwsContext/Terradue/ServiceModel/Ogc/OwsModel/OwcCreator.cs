@@ -2,9 +2,12 @@
 
 namespace Terradue.ServiceModel.Ogc.OwsModel {
     /// <summary>
-    /// This datatype class provides place to encode information related to the creator of the context document. 
-    /// It includes the creator application and any relevant properties or settings for the application. 
+    /// OWC Creator
     /// </summary>
+    /// <description>
+    /// This object provides place to encode information related to the creator of the context document. 
+    /// It includes the creator application and any relevant properties or settings for the application. 
+    /// </description>
     /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
     /// \ingroup OWSContext
     public class OwcCreator {
@@ -35,9 +38,10 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
 
     /************************************************************************************************************/
 
-    /// <summary>
-    /// This datatype class provides place to encode information related to the creator context when the document was produced. It includes the creator application and relevant properties or settings for the application.
-    /// </summary>
+    /// <summary>OWC Application</summary>
+    /// <description>
+    /// This object provides place to encode information related to the creator context when the document was produced. It includes the creator application and relevant properties or settings for the application.
+    /// </description>
     /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
     public class OwcApplication {
 
@@ -66,13 +70,16 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
     /************************************************************************************************************/
 
     /// <summary>
-    /// This datatype class provides place to encode information related to the display area used
+    /// OWC Display
+    /// </summary>
+    /// <description>
+    /// This object provides place to encode information related to the display area used
     /// in the creator application when the OWS Context document was produced. This set of 
     /// properties only applies to creator applications which are using a geographic display and is 
     /// supporting information to the exploiter of the OWS Context document. Note the elements 
     /// within creator display are intended as supporting information (metadata) for clients and 
     /// not properties which should control the display size of the client opening the document.
-    /// </summary>
+    /// </description>
     /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
     public class OwcDisplay {
 

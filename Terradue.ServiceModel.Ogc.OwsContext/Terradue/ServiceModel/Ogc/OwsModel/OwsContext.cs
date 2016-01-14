@@ -28,9 +28,10 @@ parameters to allow the processing to be reproduced on different nodes.
 */
 
 namespace Terradue.ServiceModel.Ogc.OwsModel {
-    /// <summary>
+    /// <summary>OWS Context</summary>
+    /// <description>
     /// This class is the overall container class for the OWS context document.
-    /// </summary>
+    /// </description>
     /// \ingroup OWSContext
     /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
     public class OwsContext {

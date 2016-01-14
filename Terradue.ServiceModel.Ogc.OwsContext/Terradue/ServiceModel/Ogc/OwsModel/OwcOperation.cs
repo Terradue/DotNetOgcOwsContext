@@ -1,10 +1,11 @@
 ﻿using System;
 
 namespace Terradue.ServiceModel.Ogc.OwsModel {
-    /// <summary>
+    /// <summary>OWS Operation</summary>
+    /// <description>
     /// Definition of the operation either to get the information or to get the capabilities. 
     /// Note that service specific extension requirements may mandate more than one owc:operation.
-    /// </summary>
+    /// </description>
     /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
     /// \ingroup OWSContext
     public class OwcOperation {

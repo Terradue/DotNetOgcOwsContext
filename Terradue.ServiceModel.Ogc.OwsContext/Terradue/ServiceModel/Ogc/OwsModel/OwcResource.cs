@@ -4,7 +4,8 @@ using Terradue.ServiceModel.Syndication;
 using Terradue.ServiceModel.Ogc.OwsContext;
 
 namespace Terradue.ServiceModel.Ogc.OwsModel {
-    /// <summary>
+    /// <summary>OWS Resource</summary>
+    /// <description>
     /// This class describes the resource elements which supply the information layers used in 
     /// the Context Document. Resource, while it can be used bare, is typically classified by 
     /// owc:MediaCode indicating the type of information encoded in the resource. The resource 
@@ -13,7 +14,7 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
     /// be limitations in the individual encoding, each of these types shall be semantically 
     /// equivalent, i.e. alternative representations of the same information (they can for example 
     /// have different resolutions but should not show fundamentally different information).
-    /// </summary>
+    /// </description>
     /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
     /// \ingroup OWSContext
     public class OwcResource {

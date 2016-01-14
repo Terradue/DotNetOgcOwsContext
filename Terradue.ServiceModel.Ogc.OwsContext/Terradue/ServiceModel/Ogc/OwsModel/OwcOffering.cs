@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 
 namespace Terradue.ServiceModel.Ogc.OwsModel {
-    /// <summary>
+    /// <summary>OWS Offering</summary>
+    /// <description>
     /// This datatype class defines the properties of a specific service binding or inline content 
     /// for an offering. The service binding is primarily characterized by a series of parameters. 
     /// The parameters valid for a specific type of service binding, e.g. WFS are defined outside 
     /// of the OWS Context core specification. Each specific service binding is defined by a URI 
     /// which references a requirement class.
-    /// </summary>
+    /// </description>
     /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
     /// \ingroup OWSContext
     public class OwcOffering {
