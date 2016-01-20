@@ -53,9 +53,11 @@ namespace Terradue.ServiceModel.Ogc.OwsContext
                 return href;
             }
             set {
-                text = null;
                 href = value;
-                itemsField = null;
+                if (href != null) {
+                    text = null;
+                    itemsField = null;
+                }
             }
         }
 
@@ -75,9 +77,11 @@ namespace Terradue.ServiceModel.Ogc.OwsContext
                 return text;
             }
             set {
-                href = null;
-                itemsField = null;
                 text = value;
+                if (!string.IsNullOrEmpty(text)) {
+                    href = null;  
+                    itemsField = null;
+                }
             }
         }
 
@@ -90,9 +94,11 @@ namespace Terradue.ServiceModel.Ogc.OwsContext
             }
             set
             {
-                this.text = null;
-                this.href = null;
                 this.itemsField = value;
+                if (this.itemsField != null) {
+                    this.text = null;
+                    this.href = null;
+                }
             }
         }
 	}
