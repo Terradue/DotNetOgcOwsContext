@@ -33,7 +33,9 @@ namespace Terradue.ServiceModel.Ogc.OwsContext.Test {
             feed.Date = interval;
 
             // georss
-            whereType georss =  whereType.Deserialize("<georss:where xmlns:georss=\"http://www.georss.org/georss/10\">\n<gml:Polygon xmlns:gml=\"http://www.opengis.net/gml\">\n<gml:exterior>\n<gml:LinearRing>\n<gml:posList>45 -2 45 8 55 8 55 -2 45 -2</gml:posList>\n</gml:LinearRing>\n</gml:exterior>\n</gml:Polygon>\n</georss:where>");
+            XmlReader reader = XmlReader.Create(new StringReader("<georss:where xmlns:georss=\"http://www.georss.org/georss/10\">\n<gml:Polygon xmlns:gml=\"http://www.opengis.net/gml\">\n<gml:exterior>\n<gml:LinearRing>\n<gml:posList>45 -2 45 8 55 8 55 -2 45 -2</gml:posList>\n</gml:LinearRing>\n</gml:exterior>\n</gml:Polygon>\n</georss:where>"));
+            XmlSerializer geoRssSerializer = new XmlSerializer(typeof(whereType));
+            whereType georss = (whereType)geoRssSerializer.Deserialize(reader);
             feed.Where = georss;
 
             /// entries
@@ -44,8 +46,8 @@ namespace Terradue.ServiceModel.Ogc.OwsContext.Test {
             List<XmlNode> offeringAny = new List<XmlNode>();
             offering.Any = offeringAny.ToArray();
             List<OwcOperation> ops = new List<OwcOperation>();
-            ops.Add(new OwcOperation("GetCapabilities", new Uri("http://ows.genesi-dec.eu/geoserver/385d7d71-650a-414b-b8c7-739e2c0b5e76/wms?SERVICE=WMS&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetCapabilitiesVERSION=1.3.0&REQUEST=GetCapabilities")));
-            ops.Add(new OwcOperation("GetCapabilities2", new Uri("http://ows.genesi-dec.eu/geoserver/385d7d71-650a-414b-b8c7-739e2c0b5e76/wms?SERVICE=WMS&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetCapabilitiesVERSION=1.3.0&REQUEST=GetCapabilities")));
+            ops.Add(new OwcOperation("GetCapabilities", new Uri("http://ows.genesi-dec.eu/geoserver/385d7d71-650a-414b-b8c7-739e2c0b5e76/wms?SERVICE=WMS&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetCapabilitiesVERSION=1.3.0&REQUEST=GetCapabilities"), "application/xml"));
+            ops.Add(new OwcOperation("GetCapabilities2", new Uri("http://ows.genesi-dec.eu/geoserver/385d7d71-650a-414b-b8c7-739e2c0b5e76/wms?SERVICE=WMS&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetCapabilitiesVERSION=1.3.0&REQUEST=GetCapabilities"), "application/xml"));
             offering.Operations = ops.ToArray();
             offerings.Add(offering);
             item.Offerings = offerings;
@@ -90,7 +92,9 @@ namespace Terradue.ServiceModel.Ogc.OwsContext.Test {
             context.TimeIntervalOfInterest = interval;
 
             // georss
-            whereType georss =  whereType.Deserialize("<georss:where xmlns:georss=\"http://www.georss.org/georss/10\">\n<gml:Polygon xmlns:gml=\"http://www.opengis.net/gml\">\n<gml:exterior>\n<gml:LinearRing>\n<gml:posList>45 -2 45 8 55 8 55 -2 45 -2</gml:posList>\n</gml:LinearRing>\n</gml:exterior>\n</gml:Polygon>\n</georss:where>");
+            XmlReader reader = XmlReader.Create(new StringReader("<georss:where xmlns:georss=\"http://www.georss.org/georss/10\">\n<gml:Polygon xmlns:gml=\"http://www.opengis.net/gml\">\n<gml:exterior>\n<gml:LinearRing>\n<gml:posList>45 -2 45 8 55 8 55 -2 45 -2</gml:posList>\n</gml:LinearRing>\n</gml:exterior>\n</gml:Polygon>\n</georss:where>"));
+            XmlSerializer geoRssSerializer = new XmlSerializer(typeof(whereType));
+            whereType georss = (whereType)geoRssSerializer.Deserialize(reader);
             context.AreaOfInterest = georss;
 
             /// entries
@@ -145,6 +149,24 @@ namespace Terradue.ServiceModel.Ogc.OwsContext.Test {
             Assert.AreEqual("ftp://ftp.remotesensing.org/pub/geotiff/samples/pci_eg/acea.tif", feed.Items.First().Offerings.Last().Contents.First().Url);
            
         }
+
+        [Test()]
+        public void DeserializeMeris() {
+
+            FileStream geotiff = new FileStream("../../Terradue.ServiceModel.Ogc.OwsContext/Schemas/1.0.0/examples/wms_meris.xml", FileMode.Open);
+            OwsContextAtomFeed feed = DeserializeFromStream(geotiff);
+
+            Assert.AreEqual("Satellite Image and Countries borders Over France and England", feed.Title.Text);
+
+            Assert.AreEqual(1, feed.Items.First().Offerings.Count());
+
+            Assert.AreEqual("GetCapabilities", feed.Items.First().Offerings.First().Operations[0].Code);
+            Assert.AreEqual("GET", feed.Items.First().Offerings.First().Operations[0].Method);
+            Assert.AreEqual("application/xml", feed.Items.First().Offerings.First().Operations[0].Type);
+            Assert.AreEqual("http://ows.genesi-dec.eu/geoserver/385d7d71-650a-414b-b8c7-739e2c0b5e76/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities", feed.Items.First().Offerings.First().Operations[0].Url);
+
+        }
+
 
         [Test()]
         public void SerializeWithAny() {
