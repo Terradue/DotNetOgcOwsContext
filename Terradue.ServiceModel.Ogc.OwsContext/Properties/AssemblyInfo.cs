@@ -12,7 +12,7 @@ using System.Runtime.CompilerServices;
 
     \xrefitem sw_link "Link" "Software Package Link" [DotNetOgcOwsContext](https://github.com/Terradue/DotNetOgcOwsContext)
 
-    \xrefitem sw_license "License" "Software License" [GPLv3](https://github.com/Terradue/DotNetOgcOwsContext/blob/master/LICENSE)
+    \xrefitem sw_license "License" "Software License" [AGPL](https://github.com/Terradue/DotNetOgcOwsContext/blob/master/LICENSE)
 
     \xrefitem sw_req "Require" "Software Dependencies" \ref Terradue.ServiceModel.Syndication
 
