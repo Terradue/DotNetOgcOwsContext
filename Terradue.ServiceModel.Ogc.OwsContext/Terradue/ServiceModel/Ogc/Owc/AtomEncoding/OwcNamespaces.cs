@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Terradue.ServiceModel.Ogc.OwsContext {
+namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding {
     public static class OwcNamespaces {
        
         public const string Owc = "http://www.opengis.net/owc/1.0";

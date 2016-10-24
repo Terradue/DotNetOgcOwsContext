@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Terradue.ServiceModel.Ogc.OwsModel {
-    /// <summary>
+namespace Terradue.ServiceModel.Ogc.Owc.Model {
+    /// <summary>OWS Offering</summary>
+    /// <description>
     /// This datatype class defines the properties of a specific service binding or inline content 
     /// for an offering. The service binding is primarily characterized by a series of parameters. 
     /// The parameters valid for a specific type of service binding, e.g. WFS are defined outside 
     /// of the OWS Context core specification. Each specific service binding is defined by a URI 
     /// which references a requirement class.
-    /// </summary>
-    public class OwcOffering {
+    /// </description>
+    /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
+    /// \ingroup OWSContext
+    public class Offering {
 
         /// <summary>
         /// Code identifying the type of service offering
@@ -20,20 +23,22 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
         /// <summary>
         /// Operations used to invoke the service
         /// </summary>
-        /// <value>The operation.</value>
-        public List<OwcOperation> Operations { get; set; }
+        /// \return offers \ref OwcOperation as a list of operations available to invoke the service</value>
+        /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
+        public List<Operation> Operations { get; set; }
 
         /// <summary>
         /// inline content
         /// </summary>
-        /// <value>The content.</value>
-        public List<OwcContent> Content { get; set; }
+        /// \return offers \ref OwcContent as a list of inline contents
+        /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
+        public List<Content> Content { get; set; }
 
         /// <summary>
         /// Style sets to style the in-line content
         /// </summary>
         /// <value>The style set.</value>
-        public List<OwcStyleSet> StyleSet { get; set; }
+        public List<StyleSet> StyleSet { get; set; }
 
         /// <summary>
         /// Any specific content
@@ -41,7 +46,7 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
         /// <value>The extension.</value>
         public object Extension { get; set; }
 
-        public OwcOffering() {
+        public Offering() {
         }
     }
 }

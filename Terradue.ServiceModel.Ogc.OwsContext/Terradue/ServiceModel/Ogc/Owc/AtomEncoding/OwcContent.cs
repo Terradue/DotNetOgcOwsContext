@@ -2,12 +2,12 @@ using System;
 using Terradue.ServiceModel.Syndication;
 using System.Xml;
 
-namespace Terradue.ServiceModel.Ogc.OwsContext
+namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding
 {
 
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace = OwcNamespaces.Owc)]
-    [System.Xml.Serialization.XmlRootAttribute(ElementName="content", Namespace = OwcNamespaces.Owc, IsNullable = false)]
+    [System.Xml.Serialization.XmlRootAttribute("content", Namespace = OwcNamespaces.Owc, IsNullable = false)]
 	public class OwcContent
 	{
         private string type;
@@ -35,7 +35,7 @@ namespace Terradue.ServiceModel.Ogc.OwsContext
             this.type = type;
         }
 
-        [System.Xml.Serialization.XmlAttributeAttribute(AttributeName = "href")]
+        [System.Xml.Serialization.XmlAttributeAttribute("href")]
         public string Url {
             get {
                 if (Href == null)
@@ -59,7 +59,7 @@ namespace Terradue.ServiceModel.Ogc.OwsContext
             }
         }
 
-        [System.Xml.Serialization.XmlAttributeAttribute(AttributeName = "type")]
+        [System.Xml.Serialization.XmlAttributeAttribute("type")]
         public string Type {
             get {
                 return type;

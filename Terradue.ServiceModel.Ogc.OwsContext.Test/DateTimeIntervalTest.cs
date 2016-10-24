@@ -1,7 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 
-namespace Terradue.ServiceModel.Ogc.OwsContext.Test {
+namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding.Test {
 
     [TestFixture()]
     public class DateTimeIntervalTest {
@@ -25,7 +25,7 @@ namespace Terradue.ServiceModel.Ogc.OwsContext.Test {
             interval.StartDate = DateTime.Parse("2010-05-30T05:54:34+02");
             interval.EndDate = DateTime.Parse("2010-05-31T20:20:20.000Z");
 
-            Assert.AreEqual("2010-05-30T03:54:34.000Z/2010-05-31T20:20:20.000Z", interval.ToString());
+            Assert.AreEqual("2010-05-30T03:54:34.0000000Z/2010-05-31T20:20:20.0000000Z", interval.ToString());
         }
     }
 }

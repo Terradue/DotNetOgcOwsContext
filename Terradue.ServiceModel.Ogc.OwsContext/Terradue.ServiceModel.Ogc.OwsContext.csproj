@@ -37,25 +37,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Terradue\ServiceModel\Ogc\OwsContext\DateTimeInterval.cs" />
-    <Compile Include="Terradue\ServiceModel\Ogc\OwsContext\OwcDisplay.cs" />
-    <Compile Include="Terradue\ServiceModel\Ogc\OwsContext\OwsContextAtomFeed.cs" />
-    <Compile Include="Terradue\ServiceModel\Ogc\OwsContext\XElementExtensions.cs" />
-    <Compile Include="Terradue\ServiceModel\Ogc\OwsContext\GeoRss.cs" />
-    <Compile Include="Terradue\ServiceModel\Ogc\OwsContext\OwsContextAtomEntry.cs" />
-    <Compile Include="Terradue\ServiceModel\Ogc\OwsContext\OwcOffering.cs" />
-    <Compile Include="Terradue\ServiceModel\Ogc\OwsContext\OwcOperation.cs" />
-    <Compile Include="Terradue\ServiceModel\Ogc\OwsContext\OwcContent.cs" />
-    <Compile Include="Terradue\ServiceModel\Ogc\OwsContext\OwcNamespaces.cs" />
-    <Compile Include="Terradue\ServiceModel\Ogc\OwsContext\OwcStyleSet.cs" />
-    <Compile Include="Terradue\ServiceModel\Ogc\OwsModel\OwcContent.cs" />
-    <Compile Include="Terradue\ServiceModel\Ogc\OwsModel\OwcCreator.cs" />
-    <Compile Include="Terradue\ServiceModel\Ogc\OwsModel\OwcOffering.cs" />
-    <Compile Include="Terradue\ServiceModel\Ogc\OwsModel\OwcOperation.cs" />
-    <Compile Include="Terradue\ServiceModel\Ogc\OwsModel\OwcResource.cs" />
-    <Compile Include="Terradue\ServiceModel\Ogc\OwsModel\OwcStyleSet.cs" />
-    <Compile Include="Terradue\ServiceModel\Ogc\OwsModel\OwsContext.cs" />
-    <Compile Include="Terradue\ServiceModel\Ogc\OwsContext\OwcOfferingCollection.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\Owc\AtomEncoding\DateTimeInterval.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\Owc\AtomEncoding\GeoRss.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\Owc\AtomEncoding\OwcContent.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\Owc\AtomEncoding\OwcDisplay.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\Owc\AtomEncoding\OwcNamespaces.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\Owc\AtomEncoding\OwcOffering.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\Owc\AtomEncoding\OwcOfferingCollection.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\Owc\AtomEncoding\OwcOperation.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\Owc\AtomEncoding\OwcStyleSet.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\Owc\AtomEncoding\OwsContextAtomEntry.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\Owc\AtomEncoding\OwsContextAtomFeed.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\Owc\AtomEncoding\XElementExtensions.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\Owc\Model\Content.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\Owc\Model\Creator.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\Owc\Model\Offering.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\Owc\Model\Operation.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\Owc\Model\Resource.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\Owc\Model\StyleSet.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\Owc\Model\Context.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -89,8 +89,9 @@
     <Folder Include="Terradue\" />
     <Folder Include="Terradue\ServiceModel\" />
     <Folder Include="Terradue\ServiceModel\Ogc\" />
-    <Folder Include="Terradue\ServiceModel\Ogc\OwsContext\" />
+    <Folder Include="Terradue\ServiceModel\Ogc\Owc\" />
     <Folder Include="Schemas\" />
-    <Folder Include="Terradue\ServiceModel\Ogc\OwsModel\" />
+    <Folder Include="Terradue\ServiceModel\Ogc\Owc\AtomEncoding\" />
+    <Folder Include="Terradue\ServiceModel\Ogc\Owc\Model\" />
   </ItemGroup>
 </Project>

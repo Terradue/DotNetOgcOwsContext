@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace Terradue.ServiceModel.Ogc.OwsContext {
+namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding {
     public class DateTimeInterval {
 
         DateTime startDate;
@@ -55,9 +55,9 @@ namespace Terradue.ServiceModel.Ogc.OwsContext {
 
         public new string ToString(){
 
-            string date = StartDate.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
+            string date = StartDate.ToUniversalTime().ToString("O");
             if (endDate < DateTime.MaxValue) {
-                date += EndDate.ToUniversalTime().ToString("/yyyy-MM-ddTHH:mm:ss.fffZ");
+                date += "/" + EndDate.ToUniversalTime().ToString("O");
             }
 
             return date;

@@ -1,11 +1,14 @@
 ﻿using System;
 
-namespace Terradue.ServiceModel.Ogc.OwsModel {
-    /// <summary>
+namespace Terradue.ServiceModel.Ogc.Owc.Model {
+    /// <summary>OWS Operation</summary>
+    /// <description>
     /// Definition of the operation either to get the information or to get the capabilities. 
     /// Note that service specific extension requirements may mandate more than one owc:operation.
-    /// </summary>
-    public class OwcOperation {
+    /// </description>
+    /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
+    /// \ingroup OWSContext
+    public class Operation {
 
         /// <summary>
         /// Code identifying the type of Operation
@@ -30,13 +33,15 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
         /// Service Request URL
         /// </summary>
         /// <value>The request URI.</value>
+        /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
         public Uri RequestURL { get; set; }
 
         /// <summary>
         /// Optional request body content
         /// </summary>
-        /// <value>The request.</value>
-        public OwcContent Request { get; set; }
+        /// \return is invoked with \ref OwcContent that is the body of the requets to send along with service invokation</value>
+        /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
+        public Content Request { get; set; }
 
         /// <summary>
         /// result of the operation (optional)
@@ -50,7 +55,7 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
         /// <value>The extension.</value>
         public object Extension { get; set; }
 
-        public OwcOperation() {
+        public Operation() {
         }
     }
 }

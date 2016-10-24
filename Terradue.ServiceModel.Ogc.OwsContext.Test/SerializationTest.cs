@@ -4,13 +4,13 @@ using System.Xml;
 using System.Xml.Linq;
 using System.IO;
 using Terradue.ServiceModel.Syndication;
-using Terradue.ServiceModel.Ogc.OwsContext;
+using Terradue.ServiceModel.Ogc.Owc.AtomEncoding;
 using System.Xml.Serialization;
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Terradue.ServiceModel.Ogc.OwsContext.Test {
+namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding.Test {
 
     [TestFixture()]
     public class SerializationTest {
@@ -72,15 +72,15 @@ namespace Terradue.ServiceModel.Ogc.OwsContext.Test {
         [Test()]
         public void SerializeFromModel() {
 
-            Terradue.ServiceModel.Ogc.OwsModel.OwsContext context = new Terradue.ServiceModel.Ogc.OwsModel.OwsContext();
+            Terradue.ServiceModel.Ogc.Owc.Model.Context context = new Terradue.ServiceModel.Ogc.Owc.Model.Context();
 
             context.Abstract = "Test ows context";
             context.Publisher = "engue";
             context.Authors = new List<string>{ "author" };
 
             // display
-            Terradue.ServiceModel.Ogc.OwsModel.OwcDisplay display = new Terradue.ServiceModel.Ogc.OwsModel.OwcDisplay() { PixelWidth = 800, PixelHeight = 600, MmPerPixel = 100 };
-            context.Creator = new Terradue.ServiceModel.Ogc.OwsModel.OwcCreator();
+            Terradue.ServiceModel.Ogc.Owc.Model.OwcDisplay display = new Terradue.ServiceModel.Ogc.Owc.Model.OwcDisplay() { PixelWidth = 800, PixelHeight = 600, MmPerPixel = 100 };
+            context.Creator = new Terradue.ServiceModel.Ogc.Owc.Model.Creator();
             context.Creator.CreatorDisplay = display;
 
             // date
@@ -94,13 +94,13 @@ namespace Terradue.ServiceModel.Ogc.OwsContext.Test {
             context.AreaOfInterest = georss;
 
             /// entries
-            context.Resources = new List<Terradue.ServiceModel.Ogc.OwsModel.OwcResource>();
-            Terradue.ServiceModel.Ogc.OwsModel.OwcResource resource = new Terradue.ServiceModel.Ogc.OwsModel.OwcResource();
+            context.Resources = new List<Terradue.ServiceModel.Ogc.Owc.Model.Resource>();
+            Terradue.ServiceModel.Ogc.Owc.Model.Resource resource = new Terradue.ServiceModel.Ogc.Owc.Model.Resource();
             resource.Publisher = "engue";
-            List<Terradue.ServiceModel.Ogc.OwsModel.OwcOffering> offerings = new List<Terradue.ServiceModel.Ogc.OwsModel.OwcOffering>();
-            Terradue.ServiceModel.Ogc.OwsModel.OwcOffering offering = new Terradue.ServiceModel.Ogc.OwsModel.OwcOffering();
-            offering.Operations = new List<Terradue.ServiceModel.Ogc.OwsModel.OwcOperation>();
-            Terradue.ServiceModel.Ogc.OwsModel.OwcOperation op = new Terradue.ServiceModel.Ogc.OwsModel.OwcOperation();
+            List<Terradue.ServiceModel.Ogc.Owc.Model.Offering> offerings = new List<Terradue.ServiceModel.Ogc.Owc.Model.Offering>();
+            Terradue.ServiceModel.Ogc.Owc.Model.Offering offering = new Terradue.ServiceModel.Ogc.Owc.Model.Offering();
+            offering.Operations = new List<Terradue.ServiceModel.Ogc.Owc.Model.Operation>();
+            Terradue.ServiceModel.Ogc.Owc.Model.Operation op = new Terradue.ServiceModel.Ogc.Owc.Model.Operation();
             op.Code = "GetCapabilities";
             op.RequestURL = new Uri("http://ows.genesi-dec.eu/geoserver/385d7d71-650a-414b-b8c7-739e2c0b5e76/wms?SERVICE=WMS&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetCapabilitiesVERSION=1.3.0&REQUEST=GetCapabilities");
             offering.Operations.Add(op);
@@ -161,7 +161,7 @@ namespace Terradue.ServiceModel.Ogc.OwsContext.Test {
 
             Uri executeUri = new Uri("http://localhost/wps?");
 
-            Terradue.ServiceModel.Ogc.OwsContext.OwcOperation operation = new OwcOperation{ Method = "POST", Code = "Execute", Href = executeUri };
+            Terradue.ServiceModel.Ogc.Owc.AtomEncoding.OwcOperation operation = new OwcOperation{ Method = "POST", Code = "Execute", Href = executeUri };
 
             List<KeyValuePair<string, string>> Parameters = new List<KeyValuePair<string, string>>();
             Parameters.Add(new KeyValuePair<string, string>("manu", "test"));

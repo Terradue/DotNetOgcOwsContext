@@ -1,6 +1,26 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 
+
+/*!
+
+\namespace Terradue.ServiceModel.Ogc.OwsContext
+@{
+    Terradue .Net C# library implementing the OGC Ows Context Conceptual Model and Atom Representation
+
+    \xrefitem sw_version "Versions" "Software Package Version" 1.0.7
+
+    \xrefitem sw_link "Link" "Software Package Link" [DotNetOgcOwsContext](https://github.com/Terradue/DotNetOgcOwsContext)
+
+    \xrefitem sw_license "License" "Software License" [AGPL](https://github.com/Terradue/DotNetOgcOwsContext/blob/master/LICENSE)
+
+    \xrefitem sw_req "Require" "Software Dependencies" \ref Terradue.ServiceModel.Syndication
+
+    \ingroup Model
+@}
+
+*/
+
 // Information about this assembly is defined by the following attributes.
 // Change them to the values specific to your project.
 
@@ -17,8 +37,8 @@ using System.Runtime.CompilerServices;
 // The form "{Major}.{Minor}.*" will automatically update the build and revision,
 // and "{Major}.{Minor}.{Build}.*" will update just the revision.
 
-[assembly: AssemblyVersion("1.0.6.*")]
-[assembly: AssemblyInformationalVersion("1.0.6")]
+[assembly: AssemblyVersion("1.0.7.*")]
+[assembly: AssemblyInformationalVersion("1.0.7")]
 
 // The following attributes are used to specify the signing key for the assembly,
 // if desired. See the Mono documentation for more information about signing.

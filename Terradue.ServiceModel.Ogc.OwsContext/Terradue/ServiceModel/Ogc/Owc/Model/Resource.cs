@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using Terradue.ServiceModel.Syndication;
-using Terradue.ServiceModel.Ogc.OwsContext;
+using Terradue.ServiceModel.Ogc.Owc.AtomEncoding;
 
-namespace Terradue.ServiceModel.Ogc.OwsModel {
-    /// <summary>
+namespace Terradue.ServiceModel.Ogc.Owc.Model {
+    /// <summary>OWS Resource</summary>
+    /// <description>
     /// This class describes the resource elements which supply the information layers used in 
     /// the Context Document. Resource, while it can be used bare, is typically classified by 
     /// owc:MediaCode indicating the type of information encoded in the resource. The resource 
@@ -13,8 +14,10 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
     /// be limitations in the individual encoding, each of these types shall be semantically 
     /// equivalent, i.e. alternative representations of the same information (they can for example 
     /// have different resolutions but should not show fundamentally different information).
-    /// </summary>
-    public class OwcResource {
+    /// </description>
+    /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
+    /// \ingroup OWSContext
+    public class Resource {
 
         /// <summary>
         /// Unique Identifier assigned to the owc Resource. Used to reference a resource from other resources 
@@ -26,30 +29,35 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
         /// A Human Readable Title for the OWC Resource
         /// </summary>
         /// <value>The title.</value>
+        /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
         public string Title { get; set; }
 
         /// <summary>
         /// Description of the Context Document Purpose/Content 
         /// </summary>
         /// <value>The abstract.</value>
+        /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
         public string Abstract { get; set; }
 
         /// <summary>
         /// Date when the resource definition was updated
         /// </summary>
         /// <value>The update date.</value>
+        /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
         public DateTimeOffset UpdateDate { get; set; }
 
         /// <summary>
         /// Identifier for the author of the resource definition
         /// </summary>
         /// <value>The author.</value>
+        /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
         public List<string> Authors { get; set; }
 
         /// <summary>
         /// Identifier for the publisher of the resource definition
         /// </summary>
         /// <value>The publisher.</value>
+        /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
         public string Publisher { get; set; }
 
         /// <summary>
@@ -62,18 +70,21 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
         /// The geographic extent of the resource 
         /// </summary>
         /// <value>The geospatial extent.</value>
+        /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
         public object GeospatialExtent { get; set; }
 
         /// <summary>
         /// The temporal extent of the content of the resource
         /// </summary>
         /// <value>The temporal extent.</value>
+        /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
         public DateTimeInterval TemporalExtent { get; set; }
 
         /// <summary>
         /// A URI identifying a preview of the resource
         /// </summary>
         /// <value>The preview.</value>
+        /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
         public List<Uri> Preview { get; set; }
 
         /// <summary>
@@ -81,13 +92,15 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
         /// The expectation is that the return type of this call will be a well-known format 
         /// </summary>
         /// <value>The content by reference.</value>
+        /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
         public List<Uri> ContentByRef { get; set; }
 
         /// <summary>
         /// Service or inline content offering for the resource targeted at OGC compliant clients
         /// </summary>
-        /// <value>The offering.</value>
-        public List<OwcOffering> Offerings { get; set; }
+        ///\return exposes \ref OwcOffering as services or inline contents for the resource</value>
+        /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
+        public List<Offering> Offerings { get; set; }
 
         /// <summary>
         /// This flag indicates the state of the resource within the context document. 
@@ -133,9 +146,9 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
         public object Extension { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Terradue.ServiceModel.Ogc.OwsModel.OwcResource"/> class.
+        /// Initializes a new instance of the <see cref="Terradue.ServiceModel.Ogc.Owc.Model.Resource"/> class.
         /// </summary>
-        public OwcResource() {
+        public Resource() {
         }
 
         /// <summary>
@@ -174,8 +187,8 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
             }
                 
             if (this.Offerings != null) {
-                List<Terradue.ServiceModel.Ogc.OwsContext.OwcOffering> offerings = new List<Terradue.ServiceModel.Ogc.OwsContext.OwcOffering>();
-                foreach (OwcOffering off in this.Offerings) offerings.Add(new Terradue.ServiceModel.Ogc.OwsContext.OwcOffering(off));
+                List<Terradue.ServiceModel.Ogc.Owc.AtomEncoding.OwcOffering> offerings = new List<Terradue.ServiceModel.Ogc.Owc.AtomEncoding.OwcOffering>();
+                foreach (Offering off in this.Offerings) offerings.Add(new Terradue.ServiceModel.Ogc.Owc.AtomEncoding.OwcOffering(off));
                 item.Offerings = offerings;
             }
 

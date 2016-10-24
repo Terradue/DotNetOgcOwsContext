@@ -5,7 +5,7 @@ using System.Xml.Serialization;
 using System.Collections;
 using System.Collections.ObjectModel;
 
-namespace Terradue.ServiceModel.Ogc.OwsContext {
+namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding {
     public class OwcOfferingCollection {
 
         SyndicationElementExtensionCollection elementExtensions;

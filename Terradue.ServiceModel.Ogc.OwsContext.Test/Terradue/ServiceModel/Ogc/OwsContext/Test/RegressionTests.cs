@@ -6,7 +6,7 @@ using System.IO;
 using System.Xml.Linq;
 using System.Linq;
 
-namespace Terradue.ServiceModel.Ogc.OwsContext.Test {
+namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding.Test {
 
     [TestFixture]
     public class RegressionTests {

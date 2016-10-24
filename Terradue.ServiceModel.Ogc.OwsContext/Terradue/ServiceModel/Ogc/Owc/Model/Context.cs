@@ -1,13 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
-using Terradue.ServiceModel.Ogc.OwsContext;
+using Terradue.ServiceModel.Ogc.Owc.AtomEncoding;
 using Terradue.ServiceModel.Syndication;
 
-namespace Terradue.ServiceModel.Ogc.OwsModel {
-    /// <summary>
+
+/*!
+\defgroup OWSContext OWS Context
+@{
+
+A ‘context document’ specifies a fully configured service set which can be exchanged (with a consistent interpretation) among clients supporting the standard. 
+The OGC Web Services Context Document (OWS Context) was created to allow a set of configured information resources (service set)
+to be passed between applications primarily as a collection of services. OWS Context is developed to support in-line content as well. 
+The goal is to support use cases such as the distribution of search results, the exchange of a set of resources such as 
+OGC Web Feature Service (WFS), Web Map Service (WMS), Web Map Tile Service (WMTS), Web Coverage Service (WCS) and others in a 
+‘common operating picture’. Additionally OWS Context can deliver a set of configured processing services (Web Processing Service (WPS))
+parameters to allow the processing to be reproduced on different nodes. 
+
+\xrefitem norm "Normative References" "Normative References" [OGC OWS Context Conceptual Model](https://portal.opengeospatial.org/files/?artifact_id=55182)
+
+\xrefitem norm "Normative References" "Normative References" [OGC OWS Context Atom Encoding Standard](https://portal.opengeospatial.org/files/?artifact_id=55183)
+
+\xrefitem cptype_sm "ServiceModel" "Service Models"
+
+\ingroup Model
+
+@}
+*/
+
+namespace Terradue.ServiceModel.Ogc.Owc.Model {
+    /// <summary>OWS Context</summary>
+    /// <description>
     /// This class is the overall container class for the OWS context document.
-    /// </summary>
-    public class OwsContext {
+    /// </description>
+    /// \ingroup OWSContext
+    /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
+    public class Context {
 
         /// <summary>
         /// Specification Reference identifying that this is an owc Context document 
@@ -31,37 +58,43 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
         /// A Human Readable Title for the OWS Context Document
         /// </summary>
         /// <value>The title.</value>
+        /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
         public string Title { get; set; }
 
         /// <summary>
         /// Description of the Context Document Purpose/Content 
         /// </summary>
         /// <value>The abstract.</value>
+        /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
         public string Abstract { get; set; }
 
         /// <summary>
         /// Date when the Context Document was updated
         /// </summary>
         /// <value>The update date.</value>
+        /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
         public DateTimeOffset UpdateDate { get; set; }
 
         /// <summary>
         /// Identifier for the author of the document
         /// </summary>
         /// <value>The author.</value>
+        /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
         public List<string> Authors { get; set; }
 
         /// <summary>
         /// Identifier for the publisher of the document
         /// </summary>
         /// <value>The publisher.</value>
+        /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
         public string Publisher { get; set; }
 
         /// <summary>
         /// The tool/application used to create the context document and its properties
         /// </summary>
-        /// <value>The creator.</value>
-        public OwcCreator Creator { get; set; }
+        /// \return references \ref OwcCreator as the the tool or application used to create the context document and its properties.</value>
+        /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
+        public Creator Creator { get; set; }
 
         /// <summary>
         /// Rights which apply to the context document.
@@ -90,13 +123,15 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
         /// <summary>
         /// The description of a resource and its access parameters and configuration
         /// </summary>
-        /// <value>The resource.</value>
-        public List<OwcResource> Resources { get; set; }
+        /// \return contains \ref OwcResource that describe resources and their access parameters and configuration</value>
+        /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
+        public List<Resource> Resources { get; set; }
 
         /// <summary>
         /// Additional metadata describing the context document itself. The format recommendation is ISO19115 complaint metadata. The metadata standard used should be specified
         /// </summary>
         /// <value>The context metadata.</value>
+        /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
         public object ContextMetadata { get; set; }
 
         /// <summary>
@@ -106,9 +141,9 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
         public object Extension { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Terradue.ServiceModel.Ogc.OwsModel.OwsContext"/> class.
+        /// Initializes a new instance of the <see cref="Terradue.ServiceModel.Ogc.Owc.Model.Context"/> class.
         /// </summary>
-        public OwsContext() {
+        public Context() {
         }
 
         /// <summary>
@@ -140,7 +175,7 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
 
             if (this.Creator != null) {
                 if(this.Creator.CreatorApplication != null) feed.Generator = this.Creator.CreatorApplication.Title;
-                feed.Display = new Terradue.ServiceModel.Ogc.OwsContext.OwcDisplay(this.Creator.CreatorDisplay);
+                feed.Display = new Terradue.ServiceModel.Ogc.Owc.AtomEncoding.OwcDisplay(this.Creator.CreatorDisplay);
             }
 
             if (this.Keywords != null) {
@@ -149,7 +184,7 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
 
             if (this.Resources != null) {
                 System.Collections.ObjectModel.Collection<OwsContextAtomEntry> items = new System.Collections.ObjectModel.Collection<OwsContextAtomEntry>();
-                foreach (OwcResource resource in this.Resources) items.Add(resource.ToContextAtomEntry());
+                foreach (Resource resource in this.Resources) items.Add(resource.ToContextAtomEntry());
                 feed.Items = items;
             }
 

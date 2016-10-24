@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Xml;
 
-namespace Terradue.ServiceModel.Ogc.OwsContext {
+namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding {
 
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace = OwcNamespaces.Owc)]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = OwcNamespaces.Owc, IsNullable = false)]
+    [System.Xml.Serialization.XmlRootAttribute("styleSet", Namespace = OwcNamespaces.Owc, IsNullable = false)]
     public class OwcStyleSet {
 
         XmlNode[] itemsField;

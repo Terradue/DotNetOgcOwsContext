@@ -1,4 +1,4 @@
-![Build Status](https://travis-ci.org/Terradue/DotNetOgcOwsContext.svg)
+[![Build Status](https://build.terradue.com/buildStatus/icon?job=DotNetOgcOwsContext)](https://build.terradue.com/view/sugar/job/DotNetOgcOwsContext/)
 
 # DotNetOgcOwsContext - OGC OWS Context library for .Net
 
