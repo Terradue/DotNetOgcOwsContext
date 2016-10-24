@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.ObjectModel;
+using Terradue.ServiceModel.Syndication;
 
 namespace Terradue.ServiceModel.Ogc.Owc.Model {
     /// <summary>OWS StyleSet</summary>
@@ -42,13 +44,13 @@ namespace Terradue.ServiceModel.Ogc.Owc.Model {
         /// The in-line or an external reference to the style definition
         /// </summary>
         /// <value>The content.</value>
-        public Uri Content { get; set; }
+        public Content Content { get; set; }
 
         /// <summary>
         /// Application specific content 
         /// </summary>
         /// <value>The extension.</value>
-        public object Extension { get; set; }
+        public SyndicationElementExtensionCollection Extensions { get; set; }
 
         public StyleSet() {
         }

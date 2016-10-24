@@ -13,11 +13,9 @@ namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding
         private string type;
         private Uri url;
         private string text;
-        private XmlNode[] itemsField;
+        private XmlElement itemsField;
 
         public OwcContent(){
-            Text = "";
-            this.type = "text";
         }
 
         public OwcContent(string type, Uri url){
@@ -30,9 +28,17 @@ namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding
             this.type = type;
         }
 
-        public OwcContent(string type, XmlNode[] any){
+        public OwcContent(string type, XmlElement any){
             Any = any;
             this.type = type;
+        }
+
+        public OwcContent(Model.Content content)
+        {
+            this.Type = content.Type;
+            this.Url = content.Url;
+            this.Text = content.Value;
+            this.Any = content.Extension == null ? null : content.Extension.GetObject<XmlElement>();
         }
 
         [System.Xml.Serialization.XmlAttributeAttribute("href")]
@@ -78,7 +84,7 @@ namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding
         }
 
         [System.Xml.Serialization.XmlAnyElementAttribute()]
-        public System.Xml.XmlNode[] Any
+        public System.Xml.XmlElement Any
         {
             get
             {

@@ -10,6 +10,7 @@ using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using Terradue.GeoJson.GeoRss;
+using System.Collections.ObjectModel;
 
 namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding.Test {
 
@@ -42,7 +43,7 @@ namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding.Test {
             OwsContextAtomEntry item = new OwsContextAtomEntry();
             List<OwcOffering> offerings = new List<OwcOffering>();
             OwcOffering offering = new OwcOffering();
-            List<XmlNode> offeringAny = new List<XmlNode>();
+            List<XmlElement> offeringAny = new List<XmlElement>();
             offering.Any = offeringAny.ToArray();
             List<OwcOperation> ops = new List<OwcOperation>();
             ops.Add(new OwcOperation("GetCapabilities", new Uri("http://ows.genesi-dec.eu/geoserver/385d7d71-650a-414b-b8c7-739e2c0b5e76/wms?SERVICE=WMS&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetCapabilitiesVERSION=1.3.0&REQUEST=GetCapabilities")));
@@ -100,11 +101,11 @@ namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding.Test {
             resource.Publisher = "engue";
             List<Terradue.ServiceModel.Ogc.Owc.Model.Offering> offerings = new List<Terradue.ServiceModel.Ogc.Owc.Model.Offering>();
             Terradue.ServiceModel.Ogc.Owc.Model.Offering offering = new Terradue.ServiceModel.Ogc.Owc.Model.Offering();
-            offering.Operations = new List<Terradue.ServiceModel.Ogc.Owc.Model.Operation>();
+            offering.Operation = new Collection<Terradue.ServiceModel.Ogc.Owc.Model.Operation>();
             Terradue.ServiceModel.Ogc.Owc.Model.Operation op = new Terradue.ServiceModel.Ogc.Owc.Model.Operation();
             op.Code = "GetCapabilities";
             op.RequestURL = new Uri("http://ows.genesi-dec.eu/geoserver/385d7d71-650a-414b-b8c7-739e2c0b5e76/wms?SERVICE=WMS&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetCapabilitiesVERSION=1.3.0&REQUEST=GetCapabilities");
-            offering.Operations.Add(op);
+            offering.Operation.Add(op);
             offering.Code = new Uri("http://ows.genesi-dec.eu/geoserver");
             offerings.Add(offering);
             resource.Offerings = offerings;
@@ -162,7 +163,7 @@ namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding.Test {
 
             Uri executeUri = new Uri("http://localhost/wps?");
 
-            Terradue.ServiceModel.Ogc.Owc.AtomEncoding.OwcOperation operation = new OwcOperation{ Method = "POST", Code = "Execute", Href = executeUri };
+            Terradue.ServiceModel.Ogc.Owc.AtomEncoding.OwcOperation operation = new OwcOperation{ Method = "POST", Code = "Execute", RequestUrl = executeUri };
 
             List<KeyValuePair<string, string>> Parameters = new List<KeyValuePair<string, string>>();
             Parameters.Add(new KeyValuePair<string, string>("manu", "test"));
@@ -187,11 +188,10 @@ namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding.Test {
             XmlDocument doc = new XmlDocument();
             doc.Load(ms);
 
-            List<XmlNode> nodes = new List<XmlNode>();
-            nodes.Add(doc.DocumentElement.CloneNode(true));
+            XmlElement any = (XmlElement)doc.DocumentElement.CloneNode(true);
 
             operation.Request = new OwcContent();
-            ((OwcContent)operation.Request).Any = nodes.ToArray();
+            ((OwcContent)operation.Request).Any = any;
             operations.Add(operation);
             offering.Operations = operations.ToArray();
             entry.Offerings = new List<OwcOffering>{ offering };

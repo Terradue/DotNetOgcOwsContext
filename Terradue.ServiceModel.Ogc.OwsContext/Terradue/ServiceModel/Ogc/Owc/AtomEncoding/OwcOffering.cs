@@ -1,77 +1,101 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
-namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding {
+namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding
+{
 
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace = OwcNamespaces.Owc)]
     [System.Xml.Serialization.XmlRootAttribute("offering", Namespace = OwcNamespaces.Owc, IsNullable = false)]
-    public class OwcOffering {
+    public class OwcOffering
+    {
 
 
-        private System.Xml.XmlNode[] itemsField;
-        string code;
+        private System.Xml.XmlElement[] itemsField;
+        Uri code;
         OwcOperation[] operations;
         OwcContent[] contents;
         OwcStyleSet[] styleSets;
 
-        public OwcOffering() {
+        public OwcOffering()
+        {
         }
 
-        public OwcOffering(Terradue.ServiceModel.Ogc.Owc.Model.Offering offering){
-            if(offering.Code != null) this.Code = offering.Code.AbsoluteUri;
+        public OwcOffering(Terradue.ServiceModel.Ogc.Owc.Model.Offering offering)
+        {
 
-            if (offering.Content != null) {
-                List<OwcContent> contents = new List<OwcContent>();
-                foreach (Terradue.ServiceModel.Ogc.Owc.Model.Content c in offering.Content)
-                    contents.Add((c.Url != null ? new OwcContent(c.Type, c.Url) : new OwcContent(c.Type, c.Value)));
-                this.Contents = contents.ToArray();
+            this.code = offering.Code;
+
+            if (offering.Content != null)
+            {
+                this.Contents = offering.Content.Select(c => new OwcContent(c)).ToArray();
             }
 
-            if (offering.Operations != null) {
-                List<OwcOperation> ops = new List<OwcOperation>();
-                foreach (Terradue.ServiceModel.Ogc.Owc.Model.Operation o in offering.Operations)
-                    ops.Add(new OwcOperation(o));
-                this.Operations = ops.ToArray();
+            if (offering.Operation != null)
+            {
+                this.Operations = offering.Operation.Select(c => new OwcOperation(c)).ToArray();
             }
+
+            if (offering.StyleSet != null)
+            {
+                this.StyleSets = offering.StyleSet.Select(c => new OwcStyleSet(c)).ToArray();
+            }
+
+            if (offering.Extensions != null)
+                this.Any = offering.Extensions.ToXmlElementArray();
         }
 
         [System.Xml.Serialization.XmlAnyElementAttribute()]
-        public System.Xml.XmlNode[] Any {
-            get {
+        public System.Xml.XmlElement[] Any
+        {
+            get
+            {
                 return this.itemsField;
             }
-            set {
+            set
+            {
                 this.itemsField = value;
             }
         }
 
         [System.Xml.Serialization.XmlAttributeAttribute(AttributeName = "code")]
-        public string Code {
-            get {
-                return code;
+        public string Code
+        {
+            get
+            {
+                if (code != null)
+                    return code.ToString();
+                return null;
             }
-            set {
-                code = value;
+            set
+            {
+                code = new Uri(value);
             }
         }
 
         [System.Xml.Serialization.XmlElementAttribute(ElementName = "operation")]
-        public OwcOperation[] Operations {
-            get {
+        public OwcOperation[] Operations
+        {
+            get
+            {
                 return operations;
             }
-            set {
+            set
+            {
                 operations = value;
             }
         }
-            
+
         [System.Xml.Serialization.XmlElementAttribute(ElementName = "content")]
-        public OwcContent[] Contents {
-            get {
+        public OwcContent[] Contents
+        {
+            get
+            {
                 return contents;
             }
-            set {
+            set
+            {
                 contents = value;
             }
         }

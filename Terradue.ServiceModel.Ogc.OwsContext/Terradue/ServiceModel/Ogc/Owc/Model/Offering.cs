@@ -1,5 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using Terradue.ServiceModel.Syndication;
 
 namespace Terradue.ServiceModel.Ogc.Owc.Model {
     /// <summary>OWS Offering</summary>
@@ -25,26 +26,38 @@ namespace Terradue.ServiceModel.Ogc.Owc.Model {
         /// </summary>
         /// \return offers \ref OwcOperation as a list of operations available to invoke the service</value>
         /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
-        public List<Operation> Operations { get; set; }
+        public Collection<Operation> Operation { get; set; }
 
         /// <summary>
         /// inline content
         /// </summary>
         /// \return offers \ref OwcContent as a list of inline contents
         /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
-        public List<Content> Content { get; set; }
+        public Collection<Content> Content { get; set; }
+        Collection<StyleSet> styleSet;
 
         /// <summary>
         /// Style sets to style the in-line content
         /// </summary>
         /// <value>The style set.</value>
-        public List<StyleSet> StyleSet { get; set; }
+        public Collection<StyleSet> StyleSet
+        {
+            get
+            {
+                return styleSet;
+            }
+
+            set
+            {
+                styleSet = value;
+            }
+        }
 
         /// <summary>
         /// Any specific content
         /// </summary>
         /// <value>The extension.</value>
-        public object Extension { get; set; }
+        public SyndicationElementExtensionCollection Extensions { get; set; }
 
         public Offering() {
         }

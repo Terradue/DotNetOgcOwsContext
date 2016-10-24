@@ -134,13 +134,13 @@ namespace Terradue.ServiceModel.Ogc.Owc.Model {
         /// </summary>
         /// <value>The context metadata.</value>
         /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
-        public object ContextMetadata { get; set; }
+        public SyndicationLink ContextMetadata { get; set; }
 
         /// <summary>
         /// Any encoding should allow the user to extend the context content to include custom items 
         /// </summary>
         /// <value>The extension.</value>
-        public object Extension { get; set; }
+        public ServiceModel.Syndication.SyndicationElementExtensionCollection Extension { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Terradue.ServiceModel.Ogc.Owc.Model.Context"/> class.
@@ -169,7 +169,7 @@ namespace Terradue.ServiceModel.Ogc.Owc.Model {
             if(this.SpecReference != null) feed.Links.Add(new Terradue.ServiceModel.Syndication.SyndicationLink(this.SpecReference,"profile","OWC Context document specification reference",null,this.SpecReference.AbsoluteUri.Length));
 
             //TODO: validate type of ContextMetadata
-            if(this.ContextMetadata != null) feed.Links.Add(new Terradue.ServiceModel.Syndication.SyndicationLink(new Uri((string)this.ContextMetadata),"via","Context Metadata",null,this.SpecReference.AbsoluteUri.Length));
+            if(this.ContextMetadata != null) feed.Links.Add(this.ContextMetadata);
 
             if (this.Authors != null) {
                 foreach (string author in this.Authors) feed.Authors.Add(new SyndicationPerson(null, author, null));

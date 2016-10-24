@@ -1,4 +1,5 @@
 ﻿using System;
+using Terradue.ServiceModel.Syndication;
 
 namespace Terradue.ServiceModel.Ogc.Owc.Model {
 
@@ -34,7 +35,7 @@ namespace Terradue.ServiceModel.Ogc.Owc.Model {
         /// Application specific content 
         /// </summary>
         /// <value>The extension.</value>
-        public object Extension { get; set; }
+        public SyndicationElementExtension Extension { get; set; }
 
         public Content() {
         }
