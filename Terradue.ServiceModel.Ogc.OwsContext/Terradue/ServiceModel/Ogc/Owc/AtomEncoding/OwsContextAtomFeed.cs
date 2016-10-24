@@ -5,6 +5,7 @@ using System.Xml.Linq;
 using System.Xml.Serialization;
 using System.Collections.Generic;
 using Terradue.ServiceModel.Ogc.Owc.Model;
+using Terradue.GeoJson.GeoRss;
 
 
 /*!
@@ -87,21 +88,29 @@ namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding {
             }
         }
 
-        public whereType Where {
-            get {
-                var wheres = ElementExtensions.ReadElementExtensions<whereType>("where", OwcNamespaces.GeoRss, new XmlSerializer(typeof(whereType)));
-                if (wheres.Count() > 0) {
-                    return wheres.First();
-                } else {
-                    return null;
+        public GeoRssWhere Where
+        {
+            get
+            {
+                var whereExts = ElementExtensions.ReadElementExtensions<SyndicationElementExtension>("where", OwcNamespaces.GeoRss);
+                if (whereExts.Count > 0)
+                {
+                    GeoRssWhere where = (GeoRssWhere)GeoRssHelper.Deserialize(whereExts.First().GetReader());
+                    if (where != null)
+                    {
+                        return where;
+                    }
                 }
+                return null;
             }
-            set {
-                var dates = ElementExtensions.ReadElementExtensions<SyndicationElementExtension>("where", OwcNamespaces.GeoRss);
-                foreach (var date in dates) {
+            set
+            {
+                var whereExts = ElementExtensions.ReadElementExtensions<SyndicationElementExtension>("where", OwcNamespaces.GeoRss);
+                foreach (var date in whereExts)
+                {
                     ElementExtensions.Remove(date);
                 }
-                ElementExtensions.Add(value, new XmlSerializer(typeof(whereType)));
+                ElementExtensions.Add(value.CreateReader());
             }
         }
 

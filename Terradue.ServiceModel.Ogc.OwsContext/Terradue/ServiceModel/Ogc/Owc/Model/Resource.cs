@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Terradue.ServiceModel.Syndication;
 using Terradue.ServiceModel.Ogc.Owc.AtomEncoding;
+using Terradue.GeoJson.GeoRss;
 
 namespace Terradue.ServiceModel.Ogc.Owc.Model {
     /// <summary>OWS Resource</summary>
@@ -71,7 +72,7 @@ namespace Terradue.ServiceModel.Ogc.Owc.Model {
         /// </summary>
         /// <value>The geospatial extent.</value>
         /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
-        public object GeospatialExtent { get; set; }
+        public GeoRssWhere GeospatialExtent { get; set; }
 
         /// <summary>
         /// The temporal extent of the content of the resource
@@ -164,7 +165,7 @@ namespace Terradue.ServiceModel.Ogc.Owc.Model {
             item.LastUpdatedTime = this.UpdateDate;
             item.Publisher = this.Publisher;
             item.Copyright = new TextSyndicationContent(this.Rights);
-            if(this.GeospatialExtent != null) item.Where = (whereType)this.GeospatialExtent;
+            if(this.GeospatialExtent != null) item.Where = this.GeospatialExtent;
             if(this.TemporalExtent != null) item.Date = this.TemporalExtent;
             item.MinScaleDenominator = this.MinScaleDenominator;
             item.MaxScaleDenominator = this.MaxScaleDenominator;
