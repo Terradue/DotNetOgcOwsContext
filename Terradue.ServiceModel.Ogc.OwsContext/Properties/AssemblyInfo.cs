@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
+using NuGet4Mono.Extensions;
 
 
 /*!
@@ -30,6 +31,9 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyCompany("Terradue")]
 [assembly: AssemblyProduct("")]
 [assembly: AssemblyCopyright("Terradue")]
+[assembly: AssemblyAuthors("Emmanuel Mathot")]
+[assembly: AssemblyProjectUrl("https://github.com/Terradue/DotNetOwsContent")]
+[assembly: AssemblyLicenseUrl("https://github.com/Terradue/DotNetOwsContent/blob/master/LICENSE")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
