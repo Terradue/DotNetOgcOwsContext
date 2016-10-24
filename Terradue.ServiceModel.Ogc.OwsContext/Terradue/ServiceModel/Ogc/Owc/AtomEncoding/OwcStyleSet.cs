@@ -1,76 +1,110 @@
 ﻿using System;
 using System.Xml;
+using System.Linq;
 
-namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding {
+namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding
+{
 
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = OwcNamespaces.Owc)]
+    [System.Xml.Serialization.XmlTypeAttribute("styleSet", Namespace = OwcNamespaces.Owc)]
     [System.Xml.Serialization.XmlRootAttribute("styleSet", Namespace = OwcNamespaces.Owc, IsNullable = false)]
-    public class OwcStyleSet {
+    public class OwcStyleSet
+    {
 
-        XmlNode[] itemsField;
+        XmlElement[] itemsField;
         bool defaultAttr;
         string name;
         string title;
-        string abstractEl;
+        string @abstract;
         OwcLegenUrl legendUrl;
-        OwcContent[] contents;
+        OwcContent content;
 
-        public OwcStyleSet() {
+        public OwcStyleSet()
+        {
+        }
+
+        public OwcStyleSet(ServiceModel.Ogc.Owc.Model.StyleSet styleSet)
+        {
+            this.Abstract = styleSet.Abstract;
+            if (styleSet.Content != null)
+                this.Content = new OwcContent(styleSet.Content);
+            this.Default = styleSet.Default;
+            if (styleSet.LegendURL != null)
+                this.LegendUrl = new OwcLegenUrl(styleSet.LegendURL);
+            this.name = styleSet.Name;
+            this.Title = styleSet.Title;
+            if (styleSet.Extensions != null)
+                this.Any = styleSet.Extensions.ToXmlElementArray();
+
         }
 
         [System.Xml.Serialization.XmlAttributeAttribute(AttributeName = "default")]
-        public bool Default {
-            get {
+        public bool Default
+        {
+            get
+            {
                 return defaultAttr;
             }
-            set {
+            set
+            {
                 defaultAttr = value;
             }
         }
 
         [System.Xml.Serialization.XmlElementAttribute(ElementName = "name")]
-        public string Name {
-            get {
+        public string Name
+        {
+            get
+            {
                 return name;
             }
-            set {
+            set
+            {
                 name = value;
             }
         }
 
         [System.Xml.Serialization.XmlElementAttribute(ElementName = "title")]
-        public string Title {
-            get {
+        public string Title
+        {
+            get
+            {
                 return title;
             }
-            set {
+            set
+            {
                 title = value;
             }
         }
 
         [System.Xml.Serialization.XmlElementAttribute(ElementName = "abstract")]
-        public string Abstract {
-            get {
-                return abstractEl;
+        public string Abstract
+        {
+            get
+            {
+                return @abstract;
             }
-            set {
-                abstractEl = value;
+            set
+            {
+                @abstract = value;
             }
         }
 
-        [System.Xml.Serialization.XmlElementAttribute(ElementName = "legendUrl")]
-        public OwcLegenUrl LegendUrl {
-            get {
+        [System.Xml.Serialization.XmlElementAttribute(ElementName = "legendURL")]
+        public OwcLegenUrl LegendUrl
+        {
+            get
+            {
                 return legendUrl;
             }
-            set {
+            set
+            {
                 legendUrl = value;
             }
         }
 
         [System.Xml.Serialization.XmlAnyElementAttribute()]
-        public System.Xml.XmlNode[] Any
+        public System.Xml.XmlElement[] Any
         {
             get
             {
@@ -83,49 +117,56 @@ namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding {
         }
 
         [System.Xml.Serialization.XmlElementAttribute(ElementName = "content")]
-        public OwcContent[] Contents {
-            get {
-                return contents;
+        public OwcContent Content
+        {
+            get
+            {
+                return content;
             }
-            set {
-                contents = value;
+            set
+            {
+                content = value;
             }
         }
 
         [System.SerializableAttribute()]
         [System.Xml.Serialization.XmlTypeAttribute(Namespace = OwcNamespaces.Owc)]
-        public class OwcLegenUrl {
+        public class OwcLegenUrl
+        {
 
-            public OwcLegenUrl () {}
-            string type;
-            Uri href;
+            public OwcLegenUrl() { }
 
-            [System.Xml.Serialization.XmlAttributeAttribute(AttributeName = "type")]
-            public string Type {
-                get {
-                    return type;
-                }
-                set {
-                    type = value;
-                }
+            public OwcLegenUrl(Uri legendURL)
+            {
+                this.Href = legendURL;
             }
 
+            Uri href;
+
             [System.Xml.Serialization.XmlAttributeAttribute(AttributeName = "href")]
-            public string Url {
-                get {
-                    return href.ToString();
+            public string Url
+            {
+                get
+                {
+                    if (href != null)
+                        return href.ToString();
+                    return null;
                 }
-                set {
+                set
+                {
                     href = new Uri(value);
                 }
             }
 
             [System.Xml.Serialization.XmlIgnore]
-            public Uri Href {
-                get {
+            public Uri Href
+            {
+                get
+                {
                     return href;
                 }
-                set {
+                set
+                {
                     href = value;
                 }
             }

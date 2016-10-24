@@ -14,26 +14,24 @@ namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding
 
         public OwsContextAtomEntry()
         {
-            owcOfferingCollection = new OwcOfferingCollection(this.ElementExtensions);
         }
 
         public OwsContextAtomEntry(SyndicationItem it) : base(it)
         {
-            owcOfferingCollection = new OwcOfferingCollection(this.ElementExtensions);
         }
-
-        private OwcOfferingCollection owcOfferingCollection;
 
         public List<OwcOffering> Offerings
         {
             get
             {
-                return new List<OwcOffering>(owcOfferingCollection.GetOfferings());
+                return ElementExtensions.ReadElementExtensions<OwcOffering>("offering", OwcNamespaces.Owc, OwcContextHelper.OwcOfferingSerializer).ToList();
             }
             set
             {
-                owcOfferingCollection = new OwcOfferingCollection(this.ElementExtensions);
-                owcOfferingCollection.Add(value);
+                foreach (var offering in value)
+                {
+                    ElementExtensions.Add(offering.CreateReader());
+                }
             }
         }
 

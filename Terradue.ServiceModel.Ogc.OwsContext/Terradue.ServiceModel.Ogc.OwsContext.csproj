@@ -88,12 +88,10 @@
     <Compile Include="Terradue\ServiceModel\Ogc\Owc\AtomEncoding\OwcDisplay.cs" />
     <Compile Include="Terradue\ServiceModel\Ogc\Owc\AtomEncoding\OwcNamespaces.cs" />
     <Compile Include="Terradue\ServiceModel\Ogc\Owc\AtomEncoding\OwcOffering.cs" />
-    <Compile Include="Terradue\ServiceModel\Ogc\Owc\AtomEncoding\OwcOfferingCollection.cs" />
     <Compile Include="Terradue\ServiceModel\Ogc\Owc\AtomEncoding\OwcOperation.cs" />
     <Compile Include="Terradue\ServiceModel\Ogc\Owc\AtomEncoding\OwcStyleSet.cs" />
     <Compile Include="Terradue\ServiceModel\Ogc\Owc\AtomEncoding\OwsContextAtomEntry.cs" />
     <Compile Include="Terradue\ServiceModel\Ogc\Owc\AtomEncoding\OwsContextAtomFeed.cs" />
-    <Compile Include="Terradue\ServiceModel\Ogc\Owc\AtomEncoding\XElementExtensions.cs" />
     <Compile Include="Terradue\ServiceModel\Ogc\Owc\Model\Content.cs" />
     <Compile Include="Terradue\ServiceModel\Ogc\Owc\Model\Creator.cs" />
     <Compile Include="Terradue\ServiceModel\Ogc\Owc\Model\Offering.cs" />
@@ -102,6 +100,7 @@
     <Compile Include="Terradue\ServiceModel\Ogc\Owc\Model\StyleSet.cs" />
     <Compile Include="Terradue\ServiceModel\Ogc\Owc\Model\Context.cs" />
     <Compile Include="Mono.Options\Options.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\Owc\AtomEncoding\OwcContextHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

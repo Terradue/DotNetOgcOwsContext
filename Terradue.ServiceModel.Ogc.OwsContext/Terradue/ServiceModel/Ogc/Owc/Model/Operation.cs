@@ -1,4 +1,5 @@
 ﻿using System;
+using Terradue.ServiceModel.Syndication;
 
 namespace Terradue.ServiceModel.Ogc.Owc.Model {
     /// <summary>OWS Operation</summary>
@@ -47,13 +48,13 @@ namespace Terradue.ServiceModel.Ogc.Owc.Model {
         /// result of the operation (optional)
         /// </summary>
         /// <value>The result.</value>
-        public object Result { get; set; }
+        public Content Result { get; set; }
 
         /// <summary>
         /// Application specific content 
         /// </summary>
         /// <value>The extension.</value>
-        public object Extension { get; set; }
+        public SyndicationElementExtensionCollection Extensions { get; set; }
 
         public Operation() {
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using Terradue.ServiceModel.Syndication;
 
 namespace Terradue.ServiceModel.Ogc.Owc.Model {
     /// <summary>
@@ -30,7 +31,7 @@ namespace Terradue.ServiceModel.Ogc.Owc.Model {
         /// Any encoding should allow the user to extend the Creator information to include custom items 
         /// </summary>
         /// <value>The extension.</value>
-        public object Extension { get; set; }
+        public SyndicationElementExtensionCollection Extensions { get; set; }
 
         public Creator() {
         }
@@ -99,13 +100,13 @@ namespace Terradue.ServiceModel.Ogc.Owc.Model {
         /// The number of mm per pixel for the display. If no value is available the field should be set to NULL.
         /// </summary>
         /// <value>The mm per pixel.</value>
-        public double MmPerPixel { get; set; }
+        public int MmPerPixel { get; set; }
 
         /// <summary>
         /// Any encoding should allow the user to extend the display information to include custom items 
         /// </summary>
         /// <value>The extension.</value>
-        public object Extension { get; set; }
+        public SyndicationElementExtensionCollection Extensions { get; set; }
 
         public OwcDisplay() {
         }
