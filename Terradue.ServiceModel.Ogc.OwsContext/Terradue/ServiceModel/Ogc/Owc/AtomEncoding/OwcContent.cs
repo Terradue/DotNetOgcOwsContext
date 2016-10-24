@@ -6,12 +6,12 @@ namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding
 {
 
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = OwcNamespaces.Owc)]
+    [System.Xml.Serialization.XmlTypeAttribute("content", Namespace = OwcNamespaces.Owc)]
     [System.Xml.Serialization.XmlRootAttribute("content", Namespace = OwcNamespaces.Owc, IsNullable = false)]
 	public class OwcContent
 	{
         private string type;
-        private Uri href;
+        private Uri url;
         private string text;
         private XmlNode[] itemsField;
 
@@ -20,8 +20,8 @@ namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding
             this.type = "text";
         }
 
-        public OwcContent(string type, Uri href){
-            Href = href;
+        public OwcContent(string type, Uri url){
+            Url = url;
             this.type = type;
         }
 
@@ -36,26 +36,24 @@ namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding
         }
 
         [System.Xml.Serialization.XmlAttributeAttribute("href")]
-        public string Url {
+        public string Href {
             get {
-                if (Href == null)
+                if (Url == null)
                     return null;
-                return Href.ToString();
+                return Url.ToString();
             }
             set {
-                Href = new Uri(value);
+                Url = new Uri(value);
             }
         }
 
         [System.Xml.Serialization.XmlIgnore]
-        public Uri Href {
+        public Uri Url {
             get {
-                return href;
+                return url;
             }
             set {
-                text = null;
-                href = value;
-                itemsField = null;
+                url = value;
             }
         }
 
@@ -75,8 +73,6 @@ namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding
                 return text;
             }
             set {
-                href = null;
-                itemsField = null;
                 text = value;
             }
         }
@@ -90,8 +86,6 @@ namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding
             }
             set
             {
-                this.text = null;
-                this.href = null;
                 this.itemsField = value;
             }
         }

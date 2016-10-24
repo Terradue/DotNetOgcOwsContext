@@ -9,6 +9,7 @@ using System.Xml.Serialization;
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
+using Terradue.GeoJson.GeoRss;
 
 namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding.Test {
 
@@ -33,7 +34,7 @@ namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding.Test {
             feed.Date = interval;
 
             // georss
-            whereType georss =  whereType.Deserialize("<georss:where xmlns:georss=\"http://www.georss.org/georss/10\">\n<gml:Polygon xmlns:gml=\"http://www.opengis.net/gml\">\n<gml:exterior>\n<gml:LinearRing>\n<gml:posList>45 -2 45 8 55 8 55 -2 45 -2</gml:posList>\n</gml:LinearRing>\n</gml:exterior>\n</gml:Polygon>\n</georss:where>");
+            GeoRssWhere georss = (GeoRssWhere)GeoRssHelper.Deserialize(XmlReader.Create(new StringReader("<georss:where xmlns:georss=\"http://www.georss.org/georss\">\n<gml:Polygon xmlns:gml=\"http://www.opengis.net/gml\">\n<gml:exterior>\n<gml:LinearRing>\n<gml:posList>45 -2 45 8 55 8 55 -2 45 -2</gml:posList>\n</gml:LinearRing>\n</gml:exterior>\n</gml:Polygon>\n</georss:where>")));
             feed.Where = georss;
 
             /// entries
@@ -66,7 +67,7 @@ namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding.Test {
 
             Assert.NotNull(doc.Element(XName.Get("feed", OwcNamespaces.Atom)).Element(XName.Get("display", OwcNamespaces.Owc)));
 
-            Assert.AreEqual("2010-05-30T03:54:34.000Z/2010-05-31T20:20:20.000Z", doc.Element(XName.Get("feed", OwcNamespaces.Atom)).Element(XName.Get("date", OwcNamespaces.Dc)).Value);
+            Assert.AreEqual("2010-05-30T03:54:34.0000000Z/2010-05-31T20:20:20.0000000Z", doc.Element(XName.Get("feed", OwcNamespaces.Atom)).Element(XName.Get("date", OwcNamespaces.Dc)).Value);
         }
 
         [Test()]
@@ -90,8 +91,8 @@ namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding.Test {
             context.TimeIntervalOfInterest = interval;
 
             // georss
-            whereType georss =  whereType.Deserialize("<georss:where xmlns:georss=\"http://www.georss.org/georss/10\">\n<gml:Polygon xmlns:gml=\"http://www.opengis.net/gml\">\n<gml:exterior>\n<gml:LinearRing>\n<gml:posList>45 -2 45 8 55 8 55 -2 45 -2</gml:posList>\n</gml:LinearRing>\n</gml:exterior>\n</gml:Polygon>\n</georss:where>");
-            context.AreaOfInterest = georss;
+            GeoRssWhere georss =  (GeoRssWhere)GeoRssHelper.Deserialize(XmlReader.Create(new StringReader("<georss:where xmlns:georss=\"http://www.georss.org/georss\">\n<gml:Polygon xmlns:gml=\"http://www.opengis.net/gml\">\n<gml:exterior>\n<gml:LinearRing>\n<gml:posList>45 -2 45 8 55 8 55 -2 45 -2</gml:posList>\n</gml:LinearRing>\n</gml:exterior>\n</gml:Polygon>\n</georss:where>")));
+            context.AreaOfInterest = georss.ToGeometry();
 
             /// entries
             context.Resources = new List<Terradue.ServiceModel.Ogc.Owc.Model.Resource>();
@@ -125,7 +126,7 @@ namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding.Test {
 
             Assert.NotNull(doc.Element(XName.Get("feed", OwcNamespaces.Atom)).Element(XName.Get("display", OwcNamespaces.Owc)));
 
-            Assert.AreEqual("2010-05-30T03:54:34.000Z/2010-05-31T20:20:20.000Z", doc.Element(XName.Get("feed", OwcNamespaces.Atom)).Element(XName.Get("date", OwcNamespaces.Dc)).Value);
+            Assert.AreEqual("2010-05-30T03:54:34.0000000Z/2010-05-31T20:20:20.0000000Z", doc.Element(XName.Get("feed", OwcNamespaces.Atom)).Element(XName.Get("date", OwcNamespaces.Dc)).Value);
         }
 
         [Test()]
@@ -140,9 +141,9 @@ namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding.Test {
 
             Assert.AreEqual("image/tiff", feed.Items.First().Offerings.First().Contents.First().Type);
 
-            Assert.AreEqual("ftp://ftp.remotesensing.org/pub/geotiff/samples/gdal_eg/cea.tif", feed.Items.First().Offerings.First().Contents.First().Url);
+            Assert.AreEqual("ftp://ftp.remotesensing.org/pub/geotiff/samples/gdal_eg/cea.tif", feed.Items.First().Offerings.First().Contents.First().Url.ToString());
 
-            Assert.AreEqual("ftp://ftp.remotesensing.org/pub/geotiff/samples/pci_eg/acea.tif", feed.Items.First().Offerings.Last().Contents.First().Url);
+            Assert.AreEqual("ftp://ftp.remotesensing.org/pub/geotiff/samples/pci_eg/acea.tif", feed.Items.First().Offerings.Last().Contents.First().Url.ToString());
            
         }
 

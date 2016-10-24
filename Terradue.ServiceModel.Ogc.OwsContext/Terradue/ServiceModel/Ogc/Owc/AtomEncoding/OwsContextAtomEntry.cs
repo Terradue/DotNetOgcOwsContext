@@ -3,115 +3,156 @@ using Terradue.ServiceModel.Syndication;
 using System.Linq;
 using System.Xml.Serialization;
 using System.Collections.Generic;
+using Terradue.GeoJson.GeoRss;
+using System.Xml;
 
-namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding {
-    public class OwsContextAtomEntry : SyndicationItem {
+namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding
+{
+    public class OwsContextAtomEntry : SyndicationItem
+    {
 
 
-        public OwsContextAtomEntry() {
+        public OwsContextAtomEntry()
+        {
             owcOfferingCollection = new OwcOfferingCollection(this.ElementExtensions);
         }
 
-        public OwsContextAtomEntry(SyndicationItem it) : base(it) {
+        public OwsContextAtomEntry(SyndicationItem it) : base(it)
+        {
             owcOfferingCollection = new OwcOfferingCollection(this.ElementExtensions);
         }
 
         private OwcOfferingCollection owcOfferingCollection;
 
-        public List<OwcOffering> Offerings {
-            get {
+        public List<OwcOffering> Offerings
+        {
+            get
+            {
                 return new List<OwcOffering>(owcOfferingCollection.GetOfferings());
             }
-            set {
+            set
+            {
                 owcOfferingCollection = new OwcOfferingCollection(this.ElementExtensions);
                 owcOfferingCollection.Add(value);
             }
         }
 
-        public string Publisher {
-            get {
+        public string Publisher
+        {
+            get
+            {
                 var publishers = ElementExtensions.ReadElementExtensions<string>("publisher", OwcNamespaces.Dc);
-                if (publishers.Count() > 0) {
+                if (publishers.Count() > 0)
+                {
                     return publishers.First();
-                } else {
+                }
+                else {
                     return null;
                 }
             }
-            set {
+            set
+            {
                 var publishers = ElementExtensions.ReadElementExtensions<SyndicationElementExtension>("publisher", OwcNamespaces.Dc);
-                foreach (var publisher in publishers) {
+                foreach (var publisher in publishers)
+                {
                     ElementExtensions.Remove(publisher);
                 }
                 ElementExtensions.Add("publisher", OwcNamespaces.Dc, value);
             }
         }
 
-        public DateTimeInterval Date {
-            get {
+        public DateTimeInterval Date
+        {
+            get
+            {
                 var dates = ElementExtensions.ReadElementExtensions<string>("date", OwcNamespaces.Dc);
-                if (dates.Count() > 0) {
+                if (dates.Count() > 0)
+                {
                     return DateTimeInterval.Parse(dates.First());
-                } else {
+                }
+                else {
                     return null;
                 }
             }
-            set {
+            set
+            {
                 var dates = ElementExtensions.ReadElementExtensions<SyndicationElementExtension>("date", OwcNamespaces.Dc);
-                foreach (var date in dates) {
+                foreach (var date in dates)
+                {
                     ElementExtensions.Remove(date);
                 }
                 ElementExtensions.Add("date", OwcNamespaces.Dc, value.ToString());
             }
         }
 
-        public whereType Where {
-            get {
-                var wheres = ElementExtensions.ReadElementExtensions<whereType>("where", OwcNamespaces.GeoRss, new XmlSerializer(typeof(whereType)));
-                if (wheres.Count() > 0) {
-                    return wheres.First();
-                } else {
-                    return null;
+        public GeoRssWhere Where
+        {
+            get
+            {
+                var whereExts = ElementExtensions.ReadElementExtensions<SyndicationElementExtension>("where", OwcNamespaces.GeoRss);
+                if (whereExts.Count > 0)
+                {
+                    GeoRssWhere where = (GeoRssWhere)GeoRssHelper.Deserialize(whereExts.First().GetReader());
+                    if (where != null)
+                    {
+                        return where;
+                    }
                 }
+                return null;
             }
-            set {
-                var dates = ElementExtensions.ReadElementExtensions<SyndicationElementExtension>("where", OwcNamespaces.GeoRss);
-                foreach (var date in dates) {
+            set
+            {
+                var whereExts = ElementExtensions.ReadElementExtensions<SyndicationElementExtension>("where", OwcNamespaces.GeoRss);
+                foreach (var date in whereExts)
+                {
                     ElementExtensions.Remove(date);
                 }
-                ElementExtensions.Add(value, new XmlSerializer(typeof(whereType)));
+                ElementExtensions.Add(value.CreateReader());
             }
         }
 
-        public double MinScaleDenominator {
-            get {
+        public double MinScaleDenominator
+        {
+            get
+            {
                 var minScaleDenominators = ElementExtensions.ReadElementExtensions<double>("minScaleDenominator", OwcNamespaces.Dc);
-                if (minScaleDenominators.Count() > 0) {
+                if (minScaleDenominators.Count() > 0)
+                {
                     return minScaleDenominators.First();
-                } else {
+                }
+                else {
                     return 0;
                 }
             }
-            set {
+            set
+            {
                 var minScaleDenominators = ElementExtensions.ReadElementExtensions<SyndicationElementExtension>("minScaleDenominator", OwcNamespaces.Dc);
-                foreach (var minScaleDenominator in minScaleDenominators) {
+                foreach (var minScaleDenominator in minScaleDenominators)
+                {
                     ElementExtensions.Remove(minScaleDenominator);
                 }
                 ElementExtensions.Add("minScaleDenominator", OwcNamespaces.Dc, value);
             }
         }
 
-        public double MaxScaleDenominator {
-            get {
+        public double MaxScaleDenominator
+        {
+            get
+            {
                 var maxScaleDenominators = ElementExtensions.ReadElementExtensions<double>("maxScaleDenominator", OwcNamespaces.Dc);
-                if (maxScaleDenominators.Count() > 0) {
+                if (maxScaleDenominators.Count() > 0)
+                {
                     return maxScaleDenominators.First();
-                } else {
+                }
+                else {
                     return 0;
                 }
             }
-            set {
+            set
+            {
                 var maxScaleDenominators = ElementExtensions.ReadElementExtensions<SyndicationElementExtension>("maxScaleDenominator", OwcNamespaces.Dc);
-                foreach (var maxScaleDenominator in maxScaleDenominators) {
+                foreach (var maxScaleDenominator in maxScaleDenominators)
+                {
                     ElementExtensions.Remove(maxScaleDenominator);
                 }
                 ElementExtensions.Add("maxScaleDenominator", OwcNamespaces.Dc, value);

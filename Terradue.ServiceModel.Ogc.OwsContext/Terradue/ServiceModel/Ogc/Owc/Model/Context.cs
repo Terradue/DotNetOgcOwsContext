@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Terradue.GeoJson.Geometry;
+using Terradue.GeoJson.GeoRss;
 using Terradue.ServiceModel.Ogc.Owc.AtomEncoding;
 using Terradue.ServiceModel.Syndication;
 
@@ -106,7 +108,7 @@ namespace Terradue.ServiceModel.Ogc.Owc.Model {
         /// Geographic area of interest of the users of the context document 
         /// </summary>
         /// <value>The area of interest.</value>
-        public object AreaOfInterest { get; set; }
+        public GeometryObject AreaOfInterest { get; set; }
 
         /// <summary>
         /// A date/time interval relevant to the context document
@@ -161,7 +163,7 @@ namespace Terradue.ServiceModel.Ogc.Owc.Model {
             feed.Language = this.Language;
             feed.Publisher = this.Publisher;
             feed.Copyright = new TextSyndicationContent(this.Rights);
-            feed.Where = (whereType)this.AreaOfInterest;
+            feed.Where = this.AreaOfInterest.ToGeoRssWhere();
             feed.Date = this.TimeIntervalOfInterest;
 
             if(this.SpecReference != null) feed.Links.Add(new Terradue.ServiceModel.Syndication.SyndicationLink(this.SpecReference,"profile","OWC Context document specification reference",null,this.SpecReference.AbsoluteUri.Length));
