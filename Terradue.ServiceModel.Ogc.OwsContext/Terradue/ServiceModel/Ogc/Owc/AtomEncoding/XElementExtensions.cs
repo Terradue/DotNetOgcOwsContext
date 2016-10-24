@@ -1,7 +1,7 @@
 ﻿using System.Xml;
 using System.Xml.Linq;
 
-namespace Terradue.ServiceModel.Ogc.OwsContext {
+namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding {
 
     public static class XElementExtensions {
         public static XmlElement ToXmlElement(this XElement el) {

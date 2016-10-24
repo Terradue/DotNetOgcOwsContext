@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Terradue.ServiceModel.Syndication;
-using Terradue.ServiceModel.Ogc.OwsContext;
+using Terradue.ServiceModel.Ogc.Owc.AtomEncoding;
 
-namespace Terradue.ServiceModel.Ogc.OwsModel {
+namespace Terradue.ServiceModel.Ogc.Owc.Model {
     /// <summary>OWS Resource</summary>
     /// <description>
     /// This class describes the resource elements which supply the information layers used in 
@@ -17,7 +17,7 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
     /// </description>
     /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
     /// \ingroup OWSContext
-    public class OwcResource {
+    public class Resource {
 
         /// <summary>
         /// Unique Identifier assigned to the owc Resource. Used to reference a resource from other resources 
@@ -100,7 +100,7 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
         /// </summary>
         ///\return exposes \ref OwcOffering as services or inline contents for the resource</value>
         /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
-        public List<OwcOffering> Offerings { get; set; }
+        public List<Offering> Offerings { get; set; }
 
         /// <summary>
         /// This flag indicates the state of the resource within the context document. 
@@ -146,9 +146,9 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
         public object Extension { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Terradue.ServiceModel.Ogc.OwsModel.OwcResource"/> class.
+        /// Initializes a new instance of the <see cref="Terradue.ServiceModel.Ogc.Owc.Model.Resource"/> class.
         /// </summary>
-        public OwcResource() {
+        public Resource() {
         }
 
         /// <summary>
@@ -187,8 +187,8 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
             }
                 
             if (this.Offerings != null) {
-                List<Terradue.ServiceModel.Ogc.OwsContext.OwcOffering> offerings = new List<Terradue.ServiceModel.Ogc.OwsContext.OwcOffering>();
-                foreach (OwcOffering off in this.Offerings) offerings.Add(new Terradue.ServiceModel.Ogc.OwsContext.OwcOffering(off));
+                List<Terradue.ServiceModel.Ogc.Owc.AtomEncoding.OwcOffering> offerings = new List<Terradue.ServiceModel.Ogc.Owc.AtomEncoding.OwcOffering>();
+                foreach (Offering off in this.Offerings) offerings.Add(new Terradue.ServiceModel.Ogc.Owc.AtomEncoding.OwcOffering(off));
                 item.Offerings = offerings;
             }
 

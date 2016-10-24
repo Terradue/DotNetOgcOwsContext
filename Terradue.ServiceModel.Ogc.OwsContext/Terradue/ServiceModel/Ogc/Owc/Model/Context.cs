@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Terradue.ServiceModel.Ogc.OwsContext;
+using Terradue.ServiceModel.Ogc.Owc.AtomEncoding;
 using Terradue.ServiceModel.Syndication;
 
 
@@ -27,14 +27,14 @@ parameters to allow the processing to be reproduced on different nodes.
 @}
 */
 
-namespace Terradue.ServiceModel.Ogc.OwsModel {
+namespace Terradue.ServiceModel.Ogc.Owc.Model {
     /// <summary>OWS Context</summary>
     /// <description>
     /// This class is the overall container class for the OWS context document.
     /// </description>
     /// \ingroup OWSContext
     /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
-    public class OwsContext {
+    public class Context {
 
         /// <summary>
         /// Specification Reference identifying that this is an owc Context document 
@@ -94,7 +94,7 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
         /// </summary>
         /// \return references \ref OwcCreator as the the tool or application used to create the context document and its properties.</value>
         /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
-        public OwcCreator Creator { get; set; }
+        public Creator Creator { get; set; }
 
         /// <summary>
         /// Rights which apply to the context document.
@@ -125,7 +125,7 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
         /// </summary>
         /// \return contains \ref OwcResource that describe resources and their access parameters and configuration</value>
         /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
-        public List<OwcResource> Resources { get; set; }
+        public List<Resource> Resources { get; set; }
 
         /// <summary>
         /// Additional metadata describing the context document itself. The format recommendation is ISO19115 complaint metadata. The metadata standard used should be specified
@@ -141,9 +141,9 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
         public object Extension { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Terradue.ServiceModel.Ogc.OwsModel.OwsContext"/> class.
+        /// Initializes a new instance of the <see cref="Terradue.ServiceModel.Ogc.Owc.Model.Context"/> class.
         /// </summary>
-        public OwsContext() {
+        public Context() {
         }
 
         /// <summary>
@@ -175,7 +175,7 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
 
             if (this.Creator != null) {
                 if(this.Creator.CreatorApplication != null) feed.Generator = this.Creator.CreatorApplication.Title;
-                feed.Display = new Terradue.ServiceModel.Ogc.OwsContext.OwcDisplay(this.Creator.CreatorDisplay);
+                feed.Display = new Terradue.ServiceModel.Ogc.Owc.AtomEncoding.OwcDisplay(this.Creator.CreatorDisplay);
             }
 
             if (this.Keywords != null) {
@@ -184,7 +184,7 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
 
             if (this.Resources != null) {
                 System.Collections.ObjectModel.Collection<OwsContextAtomEntry> items = new System.Collections.ObjectModel.Collection<OwsContextAtomEntry>();
-                foreach (OwcResource resource in this.Resources) items.Add(resource.ToContextAtomEntry());
+                foreach (Resource resource in this.Resources) items.Add(resource.ToContextAtomEntry());
                 feed.Items = items;
             }
 

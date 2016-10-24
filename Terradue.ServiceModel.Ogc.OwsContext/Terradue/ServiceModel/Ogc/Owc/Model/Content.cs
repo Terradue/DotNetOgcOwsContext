@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Terradue.ServiceModel.Ogc.OwsModel {
+namespace Terradue.ServiceModel.Ogc.Owc.Model {
 
     /// <summary>
     /// OWC Content
@@ -10,7 +10,7 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
     /// </description>
     /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
     /// \ingroup OWSContext
-    public class OwcContent {
+    public class Content {
 
         /// <summary>
         /// Type of the inline content
@@ -28,7 +28,7 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
         /// Actual content in the content element 
         /// </summary>
         /// <value>The content.</value>
-        public string Content { get; set; }
+        public string Value { get; set; }
 
         /// <summary>
         /// Application specific content 
@@ -36,7 +36,7 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
         /// <value>The extension.</value>
         public object Extension { get; set; }
 
-        public OwcContent() {
+        public Content() {
         }
     }
 }

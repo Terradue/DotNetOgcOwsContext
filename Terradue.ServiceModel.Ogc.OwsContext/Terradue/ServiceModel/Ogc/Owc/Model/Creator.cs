@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Terradue.ServiceModel.Ogc.OwsModel {
+namespace Terradue.ServiceModel.Ogc.Owc.Model {
     /// <summary>
     /// OWC Creator
     /// </summary>
@@ -10,7 +10,7 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
     /// </description>
     /// \xrefitem rmodp "RM-ODP" "RM-ODP Doc"
     /// \ingroup OWSContext
-    public class OwcCreator {
+    public class Creator {
 
         /// <summary>
         /// The name, reference and version of the creator application used to create the context document
@@ -32,7 +32,7 @@ namespace Terradue.ServiceModel.Ogc.OwsModel {
         /// <value>The extension.</value>
         public object Extension { get; set; }
 
-        public OwcCreator() {
+        public Creator() {
         }
     }
 

@@ -1,7 +1,7 @@
 using System;
 using Terradue.ServiceModel.Syndication;
 
-namespace Terradue.ServiceModel.Ogc.OwsContext {
+namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding {
 
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace = OwcNamespaces.Owc)]
@@ -25,10 +25,10 @@ namespace Terradue.ServiceModel.Ogc.OwsContext {
             this.method = null;
         }
 
-        public OwcOperation(Terradue.ServiceModel.Ogc.OwsModel.OwcOperation operation) : this(operation.Code, operation.RequestURL){
+        public OwcOperation(Terradue.ServiceModel.Ogc.Owc.Model.Operation operation) : this(operation.Code, operation.RequestURL){
             this.Method = operation.Method;
             if(operation.Request != null)
-                this.Request = (operation.Request.Url != null ? new OwcContent(operation.Request.Type, operation.Request.Url) : new OwcContent(operation.Request.Type, operation.Request.Content));
+                this.Request = (operation.Request.Url != null ? new OwcContent(operation.Request.Type, operation.Request.Url) : new OwcContent(operation.Request.Type, operation.Request.Value));
         }
 
         [System.Xml.Serialization.XmlAttributeAttribute(AttributeName = "code")]

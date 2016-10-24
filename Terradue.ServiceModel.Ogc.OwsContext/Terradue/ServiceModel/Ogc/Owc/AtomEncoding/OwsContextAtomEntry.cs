@@ -1,53 +1,30 @@
 ﻿using System;
 using Terradue.ServiceModel.Syndication;
 using System.Linq;
-using System.Xml.Linq;
 using System.Xml.Serialization;
 using System.Collections.Generic;
-using Terradue.ServiceModel.Ogc.OwsModel;
+
+namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding {
+    public class OwsContextAtomEntry : SyndicationItem {
 
 
-/*!
-\defgroup OWSContextAtomFeed OWS Context Document
-@{
-This components provides with the representation of entities in the system into \ref OWSContext compliant
-entry in a \ref Syndication feed (typically \ref Atom)
-
-\xrefitem cptype_document "Document" "Documents" represents \ref OWSContext
-
-\xrefitem cpgroup_model "Model" "Models"
-
-\ingroup Model
-
-@}
-*/
-
-namespace Terradue.ServiceModel.Ogc.OwsContext {
-    public class OwsContextAtomFeed : SyndicationFeed {
-
-        public OwsContextAtomFeed() : base() {
-            AttributeExtensions.Add(new System.Xml.XmlQualifiedName("owc", XNamespace.Xmlns.NamespaceName), OwcNamespaces.Owc);
+        public OwsContextAtomEntry() {
+            owcOfferingCollection = new OwcOfferingCollection(this.ElementExtensions);
         }
 
-        public OwsContextAtomFeed(SyndicationFeed feed, bool cloneItems) : base(feed, cloneItems) {
-            AttributeExtensions.Add(new System.Xml.XmlQualifiedName("owc", XNamespace.Xmlns.NamespaceName), OwcNamespaces.Owc);
+        public OwsContextAtomEntry(SyndicationItem it) : base(it) {
+            owcOfferingCollection = new OwcOfferingCollection(this.ElementExtensions);
         }
 
-        public OwcDisplay Display {
+        private OwcOfferingCollection owcOfferingCollection;
+
+        public List<OwcOffering> Offerings {
             get {
-                var displays = ElementExtensions.ReadElementExtensions<OwcDisplay>("display", OwcNamespaces.Owc, new XmlSerializer(typeof(OwcDisplay)));
-                if (displays.Count() > 0) {
-                    return displays.First();
-                } else {
-                    return null;
-                }
+                return new List<OwcOffering>(owcOfferingCollection.GetOfferings());
             }
             set {
-                var displays = ElementExtensions.ReadElementExtensions<SyndicationElementExtension>("display", OwcNamespaces.Owc);
-                foreach (var display in displays) {
-                    ElementExtensions.Remove(display);
-                }
-                ElementExtensions.Add(value, new XmlSerializer(typeof(OwcDisplay)));
+                owcOfferingCollection = new OwcOfferingCollection(this.ElementExtensions);
+                owcOfferingCollection.Add(value);
             }
         }
 
@@ -105,16 +82,39 @@ namespace Terradue.ServiceModel.Ogc.OwsContext {
             }
         }
 
-        public new IEnumerable<OwsContextAtomEntry> Items {
+        public double MinScaleDenominator {
             get {
-                List<OwsContextAtomEntry> items = new List<OwsContextAtomEntry>();
-                foreach (var it in base.Items) {
-                    items.Add(new OwsContextAtomEntry(it));
+                var minScaleDenominators = ElementExtensions.ReadElementExtensions<double>("minScaleDenominator", OwcNamespaces.Dc);
+                if (minScaleDenominators.Count() > 0) {
+                    return minScaleDenominators.First();
+                } else {
+                    return 0;
                 }
-                return items;
             }
             set {
-                base.Items = new List<OwsContextAtomEntry>(value);
+                var minScaleDenominators = ElementExtensions.ReadElementExtensions<SyndicationElementExtension>("minScaleDenominator", OwcNamespaces.Dc);
+                foreach (var minScaleDenominator in minScaleDenominators) {
+                    ElementExtensions.Remove(minScaleDenominator);
+                }
+                ElementExtensions.Add("minScaleDenominator", OwcNamespaces.Dc, value);
+            }
+        }
+
+        public double MaxScaleDenominator {
+            get {
+                var maxScaleDenominators = ElementExtensions.ReadElementExtensions<double>("maxScaleDenominator", OwcNamespaces.Dc);
+                if (maxScaleDenominators.Count() > 0) {
+                    return maxScaleDenominators.First();
+                } else {
+                    return 0;
+                }
+            }
+            set {
+                var maxScaleDenominators = ElementExtensions.ReadElementExtensions<SyndicationElementExtension>("maxScaleDenominator", OwcNamespaces.Dc);
+                foreach (var maxScaleDenominator in maxScaleDenominators) {
+                    ElementExtensions.Remove(maxScaleDenominator);
+                }
+                ElementExtensions.Add("maxScaleDenominator", OwcNamespaces.Dc, value);
             }
         }
     }
