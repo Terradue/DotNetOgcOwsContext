@@ -207,7 +207,7 @@ namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding.Test {
         }
 
         public static void SerializeToStream(SyndicationFeed feed, System.IO.Stream stream) {
-            var sw = XmlWriter.Create(stream, new XmlWriterSettings(){Indent = true, NamespaceHandling = NamespaceHandling.OmitDuplicates});
+            var sw = XmlWriter.Create(stream, new XmlWriterSettings(){Indent = true});
             Atom10FeedFormatter atomFormatter = new Atom10FeedFormatter(feed);
             atomFormatter.WriteTo(sw);
             sw.Flush();
@@ -215,7 +215,7 @@ namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding.Test {
         }
 
         public static void SerializeToStream(SyndicationFeed feed, TextWriter writer) {
-            var sw = XmlWriter.Create(writer,new XmlWriterSettings(){Indent = true, NamespaceHandling = NamespaceHandling.OmitDuplicates});
+            var sw = XmlWriter.Create(writer,new XmlWriterSettings(){Indent = true});
             Atom10FeedFormatter atomFormatter = new Atom10FeedFormatter(feed);
             atomFormatter.WriteTo(sw);
             sw.Flush();
