@@ -126,8 +126,8 @@ namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding
         {
             if (exts == null) return null;
             XmlDocument doc = new XmlDocument();
-            doc.Load(exts.GetReaderAtElementExtensions());
-            XmlNodeList nodes = doc.DocumentElement.SelectNodes("//*");
+            doc.Load(exts.GetReaderAtExtensionWrapper());
+            XmlNodeList nodes = doc.DocumentElement.SelectNodes("//extensionWrapper/*");
             return nodes.Cast<XmlElement>().ToArray();
         }
 
