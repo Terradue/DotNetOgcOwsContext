@@ -121,6 +121,7 @@
     <Compile Include="Terradue\ServiceModel\Ogc\OwsContext\Test\RegressionTests.cs" />
     <Compile Include="SerializationTest.cs" />
     <Compile Include="Mono.Options\Options.cs" />
+    <Compile Include="Terradue\ServiceModel\Ogc\OwsContext\Test\SerializationTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -156,5 +157,6 @@
     <Folder Include="Terradue\ServiceModel\Ogc\" />
     <Folder Include="Terradue\ServiceModel\Ogc\OwsContext\" />
     <Folder Include="Terradue\ServiceModel\Ogc\OwsContext\Test\" />
+    <Folder Include="in\" />
   </ItemGroup>
 </Project>
