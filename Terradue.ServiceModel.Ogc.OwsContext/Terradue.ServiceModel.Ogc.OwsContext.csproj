@@ -40,7 +40,7 @@
       <HintPath>..\packages\Microsoft.Web.Xdt.2.1.1\lib\net40\Microsoft.Web.XmlTransform.dll</HintPath>
     </Reference>
     <Reference Include="NuGet4Mono">
-      <HintPath>..\packages\NuGet4Mono.0.7.0\lib\net45\NuGet4Mono.exe</HintPath>
+      <HintPath>..\packages\NuGet4Mono.0.8.0\lib\net45\NuGet4Mono.exe</HintPath>
     </Reference>
     <Reference Include="NuGet.Core">
       <HintPath>..\packages\NuGet.Core.2.10.1\lib\net40-Client\NuGet.Core.dll</HintPath>
@@ -82,7 +82,7 @@
       <HintPath>..\packages\Mono.Options.5.3.0.1\lib\net4-client\Mono.Options.dll</HintPath>
     </Reference>
     <Reference Include="NuGet4Mono.Extensions">
-      <HintPath>..\packages\NuGet4Mono.Extensions.0.7.0\lib\net45\NuGet4Mono.Extensions.dll</HintPath>
+      <HintPath>..\packages\NuGet4Mono.Extensions.0.8.0\lib\net45\NuGet4Mono.Extensions.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
