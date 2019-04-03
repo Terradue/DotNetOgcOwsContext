@@ -11,6 +11,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Terradue.GeoJson.GeoRss;
 using System.Collections.ObjectModel;
+using Terradue.ServiceModel.Ogc.Wps10;
+using Terradue.ServiceModel.Ogc.Ows11;
 
 namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding.Test {
 
@@ -133,7 +135,7 @@ namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding.Test {
         [Test()]
         public void DeserializeGeotiff() {
 
-            FileStream geotiff = new FileStream("../../Terradue.ServiceModel.Ogc.OwsContext/Schemas/1.0.0/examples/geotiff.xml", FileMode.Open);
+            FileStream geotiff = new FileStream("../in/geotiff.xml", FileMode.Open);
             OwsContextAtomFeed feed = DeserializeFromStream(geotiff);
 
             Assert.AreEqual("GeoTIFF Example", feed.Title.Text);
@@ -168,13 +170,13 @@ namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding.Test {
             List<KeyValuePair<string, string>> Parameters = new List<KeyValuePair<string, string>>();
             Parameters.Add(new KeyValuePair<string, string>("manu", "test"));
 
-            OpenGis.Wps.Execute execute = new OpenGis.Wps.Execute();
-            execute.Identifier = new OpenGis.Wps.CodeType{ Value = "id" };
-            execute.DataInputs = new List<OpenGis.Wps.InputType>();
+            Execute execute = new Execute();
+            execute.Identifier = new CodeType{ Value = "id" };
+            execute.DataInputs = new List<InputType>();
             foreach (var param in Parameters) {
-                OpenGis.Wps.InputType input = new OpenGis.Wps.InputType();
-                input.Identifier = new OpenGis.Wps.CodeType{ Value = param.Key };
-                input.Data = new OpenGis.Wps.DataType{ Item = new OpenGis.Wps.LiteralDataType{ Value = param.Value } };
+                InputType input = new InputType();
+                input.Identifier = new CodeType{ Value = param.Key };
+                input.Data = new DataType{ Item = new LiteralDataType{ Value = param.Value } };
                 execute.DataInputs.Add(input);
             }
 
@@ -182,7 +184,7 @@ namespace Terradue.ServiceModel.Ogc.Owc.AtomEncoding.Test {
             MemoryStream ms = new MemoryStream();
             XmlWriter writer = XmlWriter.Create(ms);
 
-            new System.Xml.Serialization.XmlSerializer(typeof(OpenGis.Wps.Execute)).Serialize(writer, execute);
+            new System.Xml.Serialization.XmlSerializer(typeof(Execute)).Serialize(writer, execute);
             writer.Flush();
             ms.Seek(0, SeekOrigin.Begin);
             XmlDocument doc = new XmlDocument();

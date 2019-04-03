@@ -34,16 +34,13 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Core" />
     <Reference Include="Terradue.ServiceModel.Ogc">
-      <HintPath>..\packages\Terradue.ServiceModel.Ogc.1.1.6\lib\net40\Terradue.ServiceModel.Ogc.dll</HintPath>
+      <HintPath>..\packages\Terradue.ServiceModel.Ogc.2.1.1\lib\net45\Terradue.ServiceModel.Ogc.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Web.XmlTransform">
       <HintPath>..\packages\Microsoft.Web.Xdt.2.1.1\lib\net40\Microsoft.Web.XmlTransform.dll</HintPath>
     </Reference>
     <Reference Include="NuGet4Mono">
-      <HintPath>..\packages\NuGet4Mono.0.3.0\lib\net40\NuGet4Mono.exe</HintPath>
-    </Reference>
-    <Reference Include="NuGet4Mono.Extensions">
-      <HintPath>..\packages\NuGet4Mono.0.3.0\lib\net40\NuGet4Mono.Extensions.dll</HintPath>
+      <HintPath>..\packages\NuGet4Mono.0.8.0\lib\net45\NuGet4Mono.exe</HintPath>
     </Reference>
     <Reference Include="NuGet.Core">
       <HintPath>..\packages\NuGet.Core.2.10.1\lib\net40-Client\NuGet.Core.dll</HintPath>
@@ -79,7 +76,13 @@
       <HintPath>..\packages\NetTopologySuite.IO.1.13.3.2\lib\net45\NetTopologySuite.IO.ShapeFile.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Options">
+      <HintPath>..\packages\Mono.Options.5.3.0.1\lib\net4-client\Mono.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet4Mono.Extensions">
+      <HintPath>..\packages\NuGet4Mono.Extensions.0.8.0\lib\net45\NuGet4Mono.Extensions.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -101,34 +104,10 @@
     <Compile Include="Terradue\ServiceModel\Ogc\Owc\Model\StyleSet.cs" />
     <Compile Include="Terradue\ServiceModel\Ogc\Owc\Model\Context.cs" />
     <Compile Include="Terradue\ServiceModel\Ogc\Owc\AtomEncoding\OwcContextHelper.cs" />
-    <Compile Include="Mono.Options\Options.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Schemas\1.0.0\examples\csw_10entries.xml" />
-    <None Include="Schemas\1.0.0\examples\geotiff.xml" />
-    <None Include="Schemas\1.0.0\examples\gml_road.xml" />
-    <None Include="Schemas\1.0.0\examples\gmlcov.xml" />
-    <None Include="Schemas\1.0.0\examples\meris.atom" />
-    <None Include="Schemas\1.0.0\examples\meris_borders_users.atom" />
-    <None Include="Schemas\1.0.0\examples\meris_noauthor.xml" />
-    <None Include="Schemas\1.0.0\examples\meris_noprofile.xml" />
-    <None Include="Schemas\1.0.0\examples\road.xsd" />
-    <None Include="Schemas\1.0.0\examples\sea_ice_extent_01.atom" />
-    <None Include="Schemas\1.0.0\examples\wcs_kml.xml" />
-    <None Include="Schemas\1.0.0\examples\wfs_100entries.xml" />
-    <None Include="Schemas\1.0.0\examples\wms_gml_hurricane_tomas.xml" />
-    <None Include="Schemas\1.0.0\examples\wms_meris.xml" />
-    <None Include="Schemas\1.0.0\examples\wms_scale.xml" />
-    <None Include="Schemas\1.0.0\examples\wmstestdata.xml" />
-    <None Include="Schemas\1.0.0\examples\wmts.xml" />
-    <None Include="Schemas\1.0.0\examples\wps_52north.xml" />
-    <None Include="Schemas\1.0.0\atom_feed.rnc" />
-    <None Include="Schemas\1.0.0\georss.rnc" />
-    <None Include="Schemas\1.0.0\owc.rnc" />
-    <None Include="Schemas\1.0.0\georss.xsd" />
-    <None Include="Schemas\1.0.0\gmlgeorss.xsd" />
     <None Include="CHANGELOG.md" />
   </ItemGroup>
   <ItemGroup>
@@ -136,7 +115,6 @@
     <Folder Include="Terradue\ServiceModel\" />
     <Folder Include="Terradue\ServiceModel\Ogc\" />
     <Folder Include="Terradue\ServiceModel\Ogc\Owc\" />
-    <Folder Include="Schemas\" />
     <Folder Include="Terradue\ServiceModel\Ogc\Owc\AtomEncoding\" />
     <Folder Include="Terradue\ServiceModel\Ogc\Owc\Model\" />
   </ItemGroup>

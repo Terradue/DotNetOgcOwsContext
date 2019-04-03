@@ -7,3 +7,4 @@
 TestResult.xml
 Terradue.ServiceModel.Ogc.OwsContext.Test/core
 build
+/.vs
